@@ -38,8 +38,13 @@ class Products extends CI_Controller {
 
 		$this->session->set_userdata('cart', $data);
 	}
+
+	//adds a new product
 	public function add()
 	{
-		
+		//need to add validation here
+		//if valid send to model
+		$this->product->new_product($this->input->post());
+		redirect("/admin");
 	}
 } ?>
