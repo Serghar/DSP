@@ -28,5 +28,17 @@ class Admins extends CI_Controller {
 			redirect('/admins');
 		}
 	}
+	public function logoff()
+	{
+		$this->session->sess_destroy();
+		redirect('/admins');
+	}
+	public function products()
+	{
+		$products = $this->product->get_all_products();
+		$this->load->view('admin_product_display', array(
+				"products" => $products
+			));
+	}
 
 } ?>

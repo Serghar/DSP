@@ -11,12 +11,6 @@
 
 </head>	
 <body>
-    <div id='header'>
-        <h2>Dashboard</h2>
-        <a href='/admins/orders'>Orders</a>
-        <a href='/admins/products'>Products</a>
-        <a href='/admins/logoff'>Log Off</a>
-    </div>
     <ul>
     <?php var_dump($this->session->userdata);
 
