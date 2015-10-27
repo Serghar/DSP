@@ -1,7 +1,10 @@
 <?php
 //This is the main display page
-var_dump($this->session->userdata);
+//var_dump($this->session->userdata);
 /*var_dump($products);*/
+
+//get cart size
+$cartSize = count($this->session->userdata('cart'));
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +18,7 @@ var_dump($this->session->userdata);
     <div id="container">
         <div id="header">
             <p>Header area</p>
+            <a href="/cart">Your Shopping Cart (<?=$cartSize?>)</a>
         </div>
         <div id="sidebar">
             <p>This is the sidebar/search area. Stuff still needs to be added here</p>
