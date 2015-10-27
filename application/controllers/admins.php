@@ -40,5 +40,13 @@ class Admins extends CI_Controller {
 				"products" => $products
 			));
 	}
+	public function orders()
+	{
+		$products = $this->product->get_all_products();
+		// $this->session->sess_destroy();
+		$this->load->view('admin_dashboard', array(
+			"products" => $products
+			));
+	}
 
 } ?>

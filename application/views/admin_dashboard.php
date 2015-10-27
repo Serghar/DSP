@@ -30,6 +30,25 @@
     <?php } ?>
     </ul>
 
+    <table>
+        <thead>
+            <th>Order ID</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Billing Address</th>
+            <th>Total</th>
+            <th>Status</th>
+        </thead>
+        <tbody>
+            <tr>
+            <?php /* foreach ($orders as $order) {
+                echo "<td>" . $order['id'] . "</td>";
+                echo "<td>" . $order['name'] . "</td>";
+                echo "<td>" . $order['date'] . "</td>";
+                echo "<td>" . $order['billing_address'] . "</td>";
+                echo "<td>" . $order['total'] . "</td>";
+                echo "<td>" . $order['status'] . "</td>";
+            } */ ?> 
     <form action='/products/add' method='post'>
     	Name: <input type='text' name='name'>
     	Description: <textarea name='description'></textarea>
