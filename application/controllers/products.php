@@ -127,6 +127,32 @@ class Products extends CI_Controller {
 		}
 	}
 
+	//updates the product information
+	public function update()
+	{
+		var_dump($this->input->post());
+		die();
+		if ($this->session->userdata('admin'))
+		{
+			$result = $this->product->validate_product($this->input->post());
+			
+			if($result == "valid")
+			{
+				$this->product->update_product($this->input->post());
+				redirect("/admins/products");
+			}
+			else
+			{
+				$this->session->set_flashdata("add_errors", $result);
+				redirect("/admins/edit_product/" . $this->input->post());
+			}
+		}
+		else
+		{
+			redirect("/");
+		}
+	}
+
 	//delete a product from the listings
 	public function delete($id)
 	{

@@ -11,16 +11,38 @@ class Product extends CI_Model {
     //return info on a single product
     public function get_product_info($id)
     {
-        $query = "SELECT * FROM products
+        $query = "SELECT id, name, description, price FROM products
                     WHERE id = '{$id}'";
         return $this->db->query($query)->row_array();
     }
 
+    //Get all created categories
     public function get_categories()
     {
-        $query = "SELECT * FROM categories";
+        $query = "SELECT id, name FROM categories";
         return $this->db->query($query)->result_array();
     }
+
+    //get all the categories for the product
+    public function get_product_categories($prod_id)
+    {
+        $query = "SELECT category_id, categories.name as category_name
+                    FROM products_has_categories
+                    JOIN categories ON products_has_categories.category_id=categories.id
+                    WHERE product_id = '{$prod_id}'";
+        return $this->db->query($query)->result_array();
+    }
+
+    //get all the products for a category
+    public function get_category_products($cat_id)
+    {
+        $query = "SELECT category_id, products.name, products.id, products.description, products.price
+        FROM products_has_categories 
+        OIN products ON products_has_categories.product_id=products.id
+        WHERE category_id = '{$cat_id}'";
+        return $this->db->query($query)->result_array();
+    }
+
 
     //create a new category for products
     public function new_category($post)
@@ -38,11 +60,23 @@ class Product extends CI_Model {
         $product_id = $this->db->insert_id();
 
         //connect this item to all relevant categories
-        $this->connect_categories($product_id, $post['categories']);
+        $this->category_connections($product_id, $post['categories']);
+     }
+
+     //update the products information
+     public function edit_product($post)
+     {
+
+     }
+
+     //remove a connection of a category to a product
+     public function remove_category_connection($prod_id, $cat_id)
+     {
+
      }
 
      //adds to the products_has_categories table so that products and categories are connected
-     public function connect_categories($prod_id, $cat_ids)
+     public function category_connections($prod_id, $cat_ids)
      {
         foreach ($cat_ids as $cat_id)
         {
