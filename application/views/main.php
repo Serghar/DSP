@@ -1,6 +1,7 @@
 <?php
 //This is the main display page
 var_dump($this->session->userdata);
+/*var_dump($products);*/
 ?>
 
 <!DOCTYPE html>
@@ -12,19 +13,25 @@ var_dump($this->session->userdata);
 </head>
 <body>
     <div id="container">
+        <div id="header">
+            <p>Header area</p>
+        </div>
+        <div id="sidebar">
+            <p>This is the sidebar/search area. Stuff still needs to be added here</p>
+        </div>
         <div id="main-content">
+            <h1>Products</h1>
             <ul>
             <?php foreach($products as $product)
             { ?>
-                <li>
-                    <p>Name: <?=$product['name']?></p>
-                    <p>Description: <?=$product['description']?></p>
-                    <p>Price: $<?=$product['price']?></p>
-                    <form action="/products/cart/<?=$product['id']?>" method='post'>
-                    <p>Quantity: <input type="number" name="quantity"></p>
-                    <input type="submit" value="Add to cart">
-                    </form>
-                </li>
+                <a href="/products/show/<?=$product['id']?>">
+                    <li class="product">
+                        <div class="product-info" style="background-image: url('assets/temp.jpg')">
+                            <p>Price: $<?=$product['price']?></p>
+                        </div>
+                        <h2><?=$product['name']?></h2>
+                    </li>
+                </a>
             <?php } ?>
             </ul>
         </div>
