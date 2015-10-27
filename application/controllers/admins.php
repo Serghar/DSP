@@ -65,20 +65,25 @@ class Admins extends CI_Controller {
 
 	public function orders()
 	{
+		$orders = $this->order->get_all_orders();
 		$products = $this->product->get_all_products();
 		// $this->session->sess_destroy();
 		$this->load->view('admin_dashboard', array(
-			"products" => $products
+			"products" => $products,
+			"orders" => $orders
 			));
 	}
+
 
 	public function edit_product($id)
 	{
 		$product = $this->product->get_product_info($id);
-		$categories = $this->product->get_categories();
+		$categories = $this->product->get_product_categories($id);
+		$all_categories = $this->product->get_categories();
 		$this->load->view('edit_page', array(
 			"product" => $product,
-			"categories" => $categories
+			"product_categories" => $categories,
+			"all_categories" => $all_categories
 			));
 	}
 
