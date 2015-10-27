@@ -91,7 +91,11 @@ class Products extends CI_Controller {
 	{
 		if ($this->session->userdata('admin'))
 		{
-			$this->load->view("admin_product_add");
+			//get categories
+			$categories = $this->product->get_categories();
+			$this->load->view("admin_product_add", array(
+				"categories" => $categories
+				));
 		}
 		else
 		{
@@ -104,15 +108,23 @@ class Products extends CI_Controller {
 	{
 		if ($this->session->userdata('admin'))
 		{
-			//need to add validation here
-			//if valid send to model
-			$this->product->new_product($this->input->post());
-			redirect("/admin");
+			$result = $this->product->validate_product($this->input->post());
+			
+			if($result == "valid")
+			{
+				$this->product->new_product($this->input->post());
+				redirect("/admins");
+			}
+			else
+			{
+				$this->session->set_flashdata("add_errors", $result);
+				redirect("/products/add");
+			}
 		}
 		else
 		{
 			redirect("/");
-		}	
+		}
 	}
 
 	//delete a product from the listings
@@ -129,4 +141,17 @@ class Products extends CI_Controller {
 		}
 	}
 
+	//create a new category
+	public function new_category()
+	{
+		if ($this->session->userdata('admin'))
+		{
+			$this->product->new_category($this->input->post());
+			redirect("/products/add");
+		}
+		else
+		{
+			redirect("/");
+		}
+	}
 } ?>
