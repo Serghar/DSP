@@ -4,16 +4,22 @@ class Product extends CI_Model {
     //return info on all products for main page
      public function get_all_products()
      {
-         $query = "SELECT id, name, price FROM products"; 
+         $query = "SELECT id, name, description, price FROM products"; 
          return $this->db->query($query)->result_array();
      }
 
      //return info on a single product
-     public function get_product($id)
+     public function get_product_info($id)
      {
-        $query = "SELECT id, name, price, description FROM products
+        $query = "SELECT * FROM products
                     WHERE id = '{$id}'";
         return $this->db->query($query)->row_array();
+     }
+
+    public function get_categories()
+     {
+        $query = "SELECT * FROM categories";
+        return $this->db->query($query)->result_array();
      }
 
      //insert the new product into database
@@ -29,17 +35,5 @@ class Product extends CI_Model {
      {
 
      }
-     public function get_product_info($id)
-     {
-        $query = "SELECT * FROM products WHERE id=?";
-        $values = $id;
-        return $this->db->query($query,$values)->row_array();
-     }
-     public function get_categories()
-     {
-        $query = "SELECT * FROM categories";
-        return $this->db->query($query)->result_array();
-     }
-     
 }
 ?>
