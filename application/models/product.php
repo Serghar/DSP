@@ -19,6 +19,17 @@ class Product extends CI_Model {
      {
 
      }
+     public function get_product_info($id)
+     {
+        $query = "SELECT * FROM products WHERE id=?";
+        $values = $id;
+        return $this->db->query($query,$values)->row_array();
+     }
+     public function get_categories()
+     {
+        $query = "SELECT * FROM categories";
+        return $this->db->query($query)->result_array();
+     }
      
 }
 ?>

@@ -33,17 +33,14 @@
             <th>Action</th>
         </thead>
         <tbody>
-            <tr>
                  <?php foreach ($products as $product) {
-                    echo "<td>" . $product['name'] . "</td>";
+                    echo "<tr><td>" . $product['name'] . "</td>";
                     echo "<td>" . $product['id'] . "</td>";
                     echo "<td>" . $product['name'] . "</td>";
                     echo "<td>" . $product['name'] . "</td>";
                     echo "<td>" . $product['name'] . "</td>";
-                    echo "<td>" . $product['name'] . "</td>";
-                    echo "<td><a href='/admins/edit_prod/{$product["id"]}'>edit</a> <a href='/admins/delete_prod/{$product["id"]}'>delete</a></td>";
+                    echo "<td><a href='/admins/edit_product/{$product["id"]}'>edit</a> <a href='/admins/delete_prod/{$product["id"]}'>delete</a></td></tr>";
                     } ?>
-            </tr>
         </tbody>
     </table>
 </body>

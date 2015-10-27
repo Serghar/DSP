@@ -48,5 +48,21 @@ class Admins extends CI_Controller {
 			"products" => $products
 			));
 	}
+	public function edit_product($id)
+	{
+		$product = $this->product->get_product_info($id);
+		$categories = $this->product->get_categories();
+		$this->load->view('edit_page', array(
+			"product" => $product,
+			"categories" => $categories
+			));
+	}
+	public function create()
+	{
+		$categories = $this->product->get_categories();
+		$this->load->view('create', array(
+			"categories" => $categories
+			));
+	}
 
 } ?>

@@ -3,6 +3,7 @@
 
 $route['default_controller'] = "products";
 $route['products/cart/(:any)'] = "products/cart/$1";
+$route['admins/edit_product/(:any)'] = "admins/edit_product/$1";
 $route['admin'] = "admins/login";
 $route['404_override'] = '';
 
