@@ -66,9 +66,11 @@ class Admins extends CI_Controller {
 	public function orders()
 	{
 		$products = $this->product->get_all_products();
+		$orders = $this->order->get_all_orders();
 		// $this->session->sess_destroy();
 		$this->load->view('admin_dashboard', array(
-			"products" => $products
+			"products" => $products,
+			"orders" => $orders
 			));
 	}
 
@@ -87,6 +89,24 @@ class Admins extends CI_Controller {
 		$categories = $this->product->get_categories();
 		$this->load->view('create', array(
 			"categories" => $categories
+			));
+	}
+	//this allows the admin to change the orders dashboard view by 'show all', 'shipped', 'in process'
+	public function order_display()
+	{
+		$orders = $this->order->get_selected_orders($this->input->post());
+		$this->load->view('admin_dashboard', array(
+			"orders" => $orders
+			));
+	}
+	//this allows the admin to search through the orders on the dashboard
+	public function order_search()
+	{
+		$order = $this->order->find_order($this->input->post());
+		$orders = $this->order->get_all_orders();
+		$this->load->view('admin_dashboard', array(
+			'order' => $order,
+			'orders'=> $orders
 			));
 	}
 
