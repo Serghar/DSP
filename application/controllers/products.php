@@ -13,7 +13,7 @@ class Products extends CI_Controller {
 	{
 		$products = $this->product->get_all_products();
 		// $this->session->sess_destroy();
-		$this->load->view('products', array(
+		$this->load->view('main', array(
 			"products" => $products
 			));
 	}

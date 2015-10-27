@@ -1,0 +1,36 @@
+*
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+#container {
+	width: 1080px;
+	margin: 0px auto;
+}
+
+#header {
+
+}
+
+#sidebar {
+	border: 1px solid black;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#main-content {
+	border: 1px solid black;
+	display: inline-block;
+	vertical-align: top;
+	padding: 40px;
+}
+
+li {
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid black;
+	width: 200px;
+	height: 200px;
+	margin: 5px 10px 20px 0px;
+}
