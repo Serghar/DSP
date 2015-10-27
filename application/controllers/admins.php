@@ -12,9 +12,11 @@ class Admins extends CI_Controller {
 	{
 		if ($this->session->userdata('admin'))
 		{
+			$orders = $this->order->get_all_orders();
 			$products = $this->product->get_all_products();
 			$this->load->view('admin_dashboard', array(
-				"products" => $products
+				"products" => $products,
+				"orders" => $orders
 				));
 		}
 		else
@@ -50,6 +52,16 @@ class Admins extends CI_Controller {
 				"products" => $products
 			));
 	}
+	//allows admin to search through products display
+	public function searches()
+	{
+		$results = $this->product->search($this->input->post());
+		$products = $this->product->get_all_products();
+		$this->load->view('admin_product_display', array(
+			"results" => $results,
+			"products" => $products
+			));
+	}
 
 	public function orders()
 	{
@@ -77,5 +89,6 @@ class Admins extends CI_Controller {
 			"categories" => $categories
 			));
 	}
+
 
 } ?>

@@ -55,5 +55,12 @@ class Product extends CI_Model {
      {
 
      }
+     //used to display appropriate results from admin product search
+     public function search($post)
+     {
+        $query = "SELECT * FROM products WHERE name = ?";
+        $values = $post;
+        return $this->db->query($query,$values)->result_array();
+     }
 }
 ?>
