@@ -86,8 +86,21 @@ class Products extends CI_Controller {
 
 	//--------------------ADMIN ONLY FUNCTIONS---------------------
 
-	//adds a new product
+	//brings up the admin add product page
 	public function add()
+	{
+		if ($this->session->userdata('admin'))
+		{
+			$this->load->view("admin_product_add");
+		}
+		else
+		{
+			redirect("/");
+		}	
+	}
+
+	//adds a new product
+	public function create()
 	{
 		if ($this->session->userdata('admin'))
 		{

@@ -50,12 +50,7 @@
                 echo "<td>" . $order['total'] . "</td>";
                 echo "<td>" . $order['status'] . "</td>";
             } */ ?> 
-    <form action='/products/add' method='post'>
-    	Name: <input type='text' name='name'>
-    	Description: <textarea name='description'></textarea>
-    	Price: <input type='text' name='price'>
-    	<input type='submit' value='Add Product'>
-    </form>
+    <a href="/products/add"><button>Add new Product</button></a>
 
 </body>
 </html>
