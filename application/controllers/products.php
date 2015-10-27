@@ -47,4 +47,12 @@ class Products extends CI_Controller {
 		$this->product->new_product($this->input->post());
 		redirect("/admin");
 	}
+
+	//show a products info page
+	public function show($id)
+	{
+		$product = $this->product->get_product($id);
+		$this->load->view("product", array(
+			'product_info' => $product));
+	}
 } ?>

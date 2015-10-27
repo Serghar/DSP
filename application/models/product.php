@@ -1,9 +1,19 @@
 <?php 
 class Product extends CI_Model {
+
+    //return info on all products for main page
      public function get_all_products()
      {
-         $query = "SELECT * FROM products"; 
+         $query = "SELECT id, name, price FROM products"; 
          return $this->db->query($query)->result_array();
+     }
+
+     //return info on a single product
+     public function get_product($id)
+     {
+        $query = "SELECT id, name, price, description FROM products
+                    WHERE id = '{$id}'";
+        return $this->db->query($query)->row_array();
      }
 
      //insert the new product into database
