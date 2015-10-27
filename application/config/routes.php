@@ -3,6 +3,7 @@
 
 $route['default_controller'] = "products";
 $route['cart'] = "products/cart";
+$route['checkout'] = "/users";
 $route['products/remove/(:num)'] = "products/remove/$1";
 $route['products/show/(:num)'] = "products/show/$1";
 $route['products/add_cart/(:any)'] = "products/add_cart/$1";
