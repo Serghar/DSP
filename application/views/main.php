@@ -1,7 +1,7 @@
 <?php
 //This is the main display page
 //var_dump($this->session->userdata);
-/*var_dump($products);*/
+//var_dump($products);
 
 //get cart size
 $cartSize = count($this->session->userdata('cart'));

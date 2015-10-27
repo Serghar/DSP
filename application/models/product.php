@@ -30,6 +30,26 @@ class Product extends CI_Model {
      	$this->db->query($query, $values);
      }
 
+     //remove the product from the database
+     //also removes all connections to that product
+     public function delete_product($id)
+     {
+        //remove all category connections from the order
+        $query = "DELETE FROM products_has_categories
+                    WHERE product_id = '{$id}'";
+        $this->db->query($query);
+
+        //remove the item from all order connections
+        //SOMETHING HAS TO HAPPEN HERE DIFFERENTLY
+        $query = "DELETE FROM products_in_orders
+                    WHERE product_id = '{$id}'";
+        $this->db->query($query);
+
+        //Remove the item itself
+        $query = "DELETE FROM products WHERE id = '{$id}'";
+        $this->db->query($query);
+     }
+
      //Should be used for validation of post data for the product
      public function validate_product($post)
      {

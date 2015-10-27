@@ -1,9 +1,7 @@
 <?php 
-var_dump($products);
 
 //variable to see if the cart has items in it
 (empty($products) ? $has_items = false : $has_items = true);
-var_dump($has_items);
 
 //create order total here
 $total = 0;

@@ -8,7 +8,6 @@ $route['products/remove/(:num)'] = "products/remove/$1";
 $route['products/show/(:num)'] = "products/show/$1";
 $route['products/add_cart/(:any)'] = "products/add_cart/$1";
 $route['admins/edit_product/(:any)'] = "admins/edit_product/$1";
-$route['admin'] = "admins/login";
 $route['404_override'] = '';
 
 

@@ -26,6 +26,7 @@
             <p>Name: <?=$product['name']?></p>
             <p>Description: <?=$product['description']?></p>
             <p>Price: $<?=$product['price']?></p>
+            <a href="/products/delete/<?=$product['id']?>">DELETE</a>
         </li>
     <?php } ?>
     </ul>

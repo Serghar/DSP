@@ -10,7 +10,7 @@
 	{
 		echo $this->session->flashdata('login_errors');
 	} ?>
-	<form action='/admin/' method='post'>
+	<form action='/admins/login' method='post'>
 		<input type='text' name='email'>
 		<input type='password' name='password'>
 		<input type='submit' value='Login'>

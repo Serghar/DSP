@@ -89,16 +89,31 @@ class Products extends CI_Controller {
 	//adds a new product
 	public function add()
 	{
-		//need to add validation here
-		//if valid send to model
-		$this->product->new_product($this->input->post());
-		redirect("/admin");
+		if ($this->session->userdata('admin'))
+		{
+			//need to add validation here
+			//if valid send to model
+			$this->product->new_product($this->input->post());
+			redirect("/admin");
+		}
+		else
+		{
+			redirect("/");
+		}	
 	}
 
 	//delete a product from the listings
 	public function delete($id)
 	{
-
+		if ($this->session->userdata('admin'))
+		{
+			$this->product->delete_product($id);
+			redirect("/admins");
+		}
+		else
+		{
+			redirect("/");
+		}
 	}
 
 } ?>
