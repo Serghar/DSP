@@ -6,13 +6,18 @@
 </head>
 <body>
 
-<?php var_dump($login_info) ?>
 
 <h1> Payment Page </h1>
-
 <form action = "users/purchase_process" method = "post">
-	<h3> <a href="/users/login_page"> Login </a> </h3>
-
+	<h1> Your Information </h1>
+	<p>
+		Email
+		<input type = "text" name = "email">
+	</p>
+	<p>
+		Password
+		<input type = "password" name = "password"
+	</p>
 
 	<h1> Shipping Information </h1>
 	<p>
@@ -47,10 +52,6 @@
 
 
 	<h1> Billing Information </h1>
-	<p>
-		<input type = "checkbox" name = "same_info">
-		Same as Shipping
-	</p>
 	<p>
 		First Name:
 		<input type = "text" name = "billing_first_name">

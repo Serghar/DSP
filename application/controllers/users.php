@@ -7,15 +7,33 @@ class Users extends CI_Controller {
 		//Grabbing the users'info
 		//$login_info = $this->user->login_process($this->input->post() );
 
-		$this->load->view('purchase_page', array("login_info" => $login_info) );
+		$this->load->view('purchase_page');
 	}
 
 	public function purchase_process()
 	{
-		// var_dump($this->input->post() );
-		// die();
+		//validate purchase form information here first!!
 
-		$this->user->user_process($this->input->post() );
+		//create the user, billing address, and shipping address as needed
+		$user_id = $this->user->user_process($this->input->post());
+
+		//using the ids from the previous 3 and the session cart create the order
+		$this->order->add_order($user_id);
+
+		//clear the old cart
+		$this->session->unset_userdata("cart");
+
+		//go to order confirmation page
+		redirect("/users/confirm_order");
+		
+	}
+
+	//loads a confirmation page
+	//THIS COULD BE CHANGED TO A JAVASCRIPT MESSAGE THAT THEN LOADS HOME INSTEAD
+	public function confirm_order()
+	{
+		//display confirmation page
+		$this->load->view("order_confirmation");
 	}
 
 	public function login_page()
