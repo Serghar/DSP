@@ -9,24 +9,8 @@
 <?php //var_dump($login_info); ?>
 <div id = "container">
 
-	<table>
-		<thead>
-			<th> Item </th>
-			<th> Price </th>
-			<th> Quantity </th>
-			<th> Total </th>
-		</thead>
-		<? //foreach($all_products as $product) { ?>
-			<tr>
-				<td> GUCCI BELLTTT </td>
-				<td> $19.99 </td>
-				<td> 1 <a href="______"> Update </a> <a href="______"> Delete </a>  </td>
-				<td> $ 19.99 </td>
-			</tr>
-	</table>
-
 	<form action = "users/purchase_process" method = "post">
-		<h2> Create a New User </h2>
+		<h2> Your information </h2>
 			<p> Email: 
 				<input type = "email" name = "email">
 			</p>
@@ -65,9 +49,8 @@
 			<input type = "text" name = "shipping_zipcode">
 		</p>
 
-
-
 		<h1> Billing Information </h1>
+		<!-- MAKE THIS WORK EVENTUALLY -->
 		<p>
 			<input type = "checkbox" name = "same_info">
 			Same as Shipping

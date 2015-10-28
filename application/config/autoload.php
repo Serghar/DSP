@@ -73,7 +73,6 @@ $autoload['language'] = array();
 |
 */
 
-
 $autoload['model'] = array('product', 'admin', 'order', 'user');
 
 
