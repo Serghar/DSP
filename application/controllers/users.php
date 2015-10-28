@@ -2,16 +2,11 @@
 
 class Users extends CI_Controller {
 
-	public function __construct()
-	{
-		parent:: __construct();
-		$this->output->enable_profiler();
-
-	}
 	public function index()
 	{
-		//Showing the Login Page
-		$this->load->view('login_page');
+		//Showing the Login Page partial
+		//This should be ajaxed on the purchase page eventually
+		$this->load->view('partials/login_page');
 		
 		//Showing the Purchase Page
 		$this->load->view('purchase_page');
@@ -19,12 +14,27 @@ class Users extends CI_Controller {
 
 	public function purchase_process()
 	{
-		// var_dump($this->input->post() );
-		// die();
+		//validate purchase form information here first!!
 
-		$this->user->user_process($this->input->post() );
+		//create the user, billing address, and shipping address as needed
+		$user_id = $this->user->user_process($this->input->post());
 
-		redirect('success_page');
+		//using the ids from the previous 3 and the session cart create the order
+		$this->order->add_order($user_id);
+
+		//clear the old cart
+		$this->session->set_userdata("cart", array());
+
+		//go to order confirmation page
+		redirect("/users/confirm_order");
+	}
+
+	//loads a confirmation page
+	//THIS COULD BE CHANGED TO A JAVASCRIPT MESSAGE THAT THEN LOADS HOME INSTEAD
+	public function confirm_order()
+	{
+		//display confirmation page
+		$this->load->view("order_confirmation");
 	}
 
 	public function login_page()
