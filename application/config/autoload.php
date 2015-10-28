@@ -73,11 +73,8 @@ $autoload['language'] = array();
 |
 */
 
-<<<<<<< HEAD
-$autoload['model'] = array('product', 'admin', 'order');
-=======
-$autoload['model'] = array('product', 'admin', 'order');
->>>>>>> 122b52e03a69d4c9995c93b08f9d1aac33e38388
+
+$autoload['model'] = array('product', 'admin', 'order', 'user');
 
 
 /* End of file autoload.php */
