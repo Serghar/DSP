@@ -20,4 +20,10 @@ class Order extends CI_Model {
      	$values = $post;
      	return $this->db->query($query,$values)->row_array();
      }
+     public function change_status($post)
+     {
+        $query = "UPDATE orders SET status = ?";
+        $values = $post;
+        $this->db->query($query,$values);
+     }
  } ?>

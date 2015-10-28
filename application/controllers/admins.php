@@ -126,6 +126,11 @@ class Admins extends CI_Controller {
 			"id" => $id
 			));
 	}
+	//allows admin to update order status
+	public function update_order()
+	{
+		$this->order->change_status($this->input->post());
+	}
 
 
 } ?>

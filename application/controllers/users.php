@@ -5,7 +5,7 @@ class Users extends CI_Controller {
 	public function index()
 	{
 		//Grabbing the users'info
-		//$login_info = $this->user->login_process($this->input->post() );
+		// $login_info = $this->user->login_process($this->input->post() );
 
 		$this->load->view('purchase_page', array("login_info" => $login_info) );
 	}

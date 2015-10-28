@@ -9,6 +9,7 @@
 <head>
 	<meta charset='UTF-8'>
 	<title>Edit Product Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> 
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -27,15 +28,20 @@
 
 </head>	
 <body>
-
-<h2>Edit Product -ID- <?= $product['id'] ?> </h2>
-<form action='/products/update' method='post'>
-	<p>Name: <input type='text' name='name' value='<?= $product['name']?>'></p>
+<div class='container' style='background-color: #22A7F0'>
+	<div class='row'><br>
+		<div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300px'>Edit Product - ID <?= $product['id'] ?> </div>
+	</div>
+	<div class='row'>
+		<div class='col-md-4'></div>
+		<div class='col-md-4'><br>
+		<form action='/products/update' method='post'>
+	<p>Name: <input class='col-md-4' type='text' name='name' value='<?= $product['name']?>'></p>
 	<p>Description:</p>
-	<textarea name='description'><?= $product['description']?></textarea>
-	<p>Price: <input type='text' name='price' value='<?=$product['price']?>'></p>
+	<textarea class='col-md-8' cols=25 rows=5 name='description'><?= $product['description']?></textarea><br><br>
+	<p>Price: <input class='col-md-4' style='width:182px'type='text' name='price' value='<?=$product['price']?>'></p>
 </form>
-<p>Current Product Categories:</p>
+<p>Current Product Categories:</p><br>
 <div>
 	<?php foreach($product_categories as $category)
 	{
@@ -53,11 +59,16 @@
 		<?php }
 	} ?>
 </div>
-
+<br>
+<div class='row'>
+	<div class='col-md-4'><strong>Or add a new category: </strong></div>
+</div>
+<br>
 <form action="/products/new_category" method="post">
 	<input type="text" name="category" placeholder="New category..">
 	<input type='submit' value='Add Category'></p>
 </form>
+</div>
 
 
 </body>

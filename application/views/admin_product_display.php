@@ -7,7 +7,8 @@
 <html lang='en'>
 <head>
 	<meta charset='UTF-8'>
-	<title></title>
+	<title>Admin Product Display</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script type='text/javascript'>
             $(document).ready(function() {
@@ -33,19 +34,22 @@
 
 </head>	
 <body>
-    <div id='header'>
-        <h2>Dashboard</h2>
-        <a href='/admins/orders'>Orders</a>
-        <a href='/admins/products'>Products</a>
-        <a href='/admins/logoff'>Log Off</a>
+    <div class='container'>
+        <div class='row' style='background-color: #22A7F0'><br>
+            <div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; front-weight: 300'>Dashboard</div>
+            <form class='col-lg-3 pull-right' action='/admins/products_json' method='post'>
+                <input type='text' id='search_box' name='search' placeholder='Search' style='background-color: #22A7F0; color: #FDE3A7; border: 1px solid #6C7A89'>
+                <input type='hidden' name='search_prods' value='submit'>
+            </form>
+            <a class='col-md-3 pull-right' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
+            <a class='col-md-3 pull-right' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
+            <a class='col-md-3 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
+            <br><br>
+        </div>
     </div>
-    
-    <form action='/admins/products_json' method='post'>
-        <input type='text' id='search_box' name='search' placeholder='Search'>
-        <input type='hidden' name='search_prods' value='submit'>
-    </form>
-    <button name='Add'><a href='/admins/create'>Add new product</a></button>
-    <table id='products'>
+    <div class='container' style='background-color: #A2DED0'>
+        <div class='table'><br>
+        <table id='products' class='table' style='background-color: #ECECEC; color: #6C7A89'>
         <thead>
             <th>Picture</th>
             <th>ID</th>
@@ -84,5 +88,6 @@
                     } ?>
         </tbody>
     </table>
+    <button name='Add'><a href='/admins/create'>Add new product</a></button>
 </body>
 </html>
