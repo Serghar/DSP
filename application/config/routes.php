@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-$route['default_controller'] = "products";
+$route['default_controller'] = "products"; 
 $route['cart'] = "products/cart";
 $route['checkout'] = "/users";
 $route['products/remove/(:num)'] = "products/remove/$1";
