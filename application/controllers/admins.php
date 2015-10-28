@@ -98,10 +98,11 @@ class Admins extends CI_Controller {
 	//this allows the admin to change the orders dashboard view by 'show all', 'shipped', 'in process'
 	public function order_display()
 	{
-		$orders = $this->order->get_selected_orders($this->input->post());
-		$this->load->view('admin_dashboard', array(
-			"orders" => $orders
-			));
+		echo json_encode($this->order->get_all_orders());
+		// $orders = $this->order->get_selected_orders($this->input->post());
+		// $this->load->view('admin_dashboard', array(
+			// "orders" => $orders
+			// ));
 	}
 	//this allows the admin to search through the orders on the dashboard
 	public function order_search()
@@ -111,6 +112,18 @@ class Admins extends CI_Controller {
 		$this->load->view('admin_dashboard', array(
 			'order' => $order,
 			'orders'=> $orders
+			));
+	}
+	//send json data to product display page
+	public function products_json()
+	{
+		echo json_encode($this->product->get_all_products());
+	}
+	//allows admin to click order ID and take him/her to specific order page
+	public function show($id)
+	{
+		$this->load->view('order_show', array(
+			"id" => $id
 			));
 	}
 
