@@ -49,8 +49,6 @@
 			<input type = "text" name = "shipping_zipcode">
 		</p>
 
-
-
 		<h1> Billing Information </h1>
 		<!-- MAKE THIS WORK EVENTUALLY -->
 		<p>

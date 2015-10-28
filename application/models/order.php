@@ -33,6 +33,7 @@ class Order extends CI_Model {
         {   
             $total += $product['price'] * $product['quantity'];
         }
+        
         //create a new order entry in Database
         $query = "INSERT INTO orders (total, status, user_id, created_at, updated_at) VALUES (?, ?, ?, NOW(), NOW())";
         $values = array($total, "In Process", $user_id);

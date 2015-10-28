@@ -82,7 +82,6 @@ class User extends CI_Model {
 
 				shipping_id, shipping.street as s_street, shipping.address_2 as s_address_2, shipping.state as s_state, shipping.city as s_city, shipping.zipcode as s_zipcode
 
-
 			 FROM USERS JOIN addresses AS billing ON users.billing_id = billing.id JOIN addresses AS shipping ON users.shipping_id = shipping.id WHERE users.email = ? AND users.password = ?";
 
 			$login_values = array($post['email'], $post['password']);
