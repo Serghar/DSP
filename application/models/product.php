@@ -47,8 +47,13 @@ class Product extends CI_Model {
     //create a new category for products
     public function new_category($post)
     {
-        $query = "INSERT INTO categories (name, created_at, updated_at) VALUES ('{$post['category']}', NOW(), NOW())";
-        $this->db->query($query);
+        //check if the category already exists first
+        $query = "SELECT id FROM categories WHERE name = '{$post['category']}'";
+        if(empty($this->db->query($query)->row_array()))
+        {
+            $query = "INSERT INTO categories (name, created_at, updated_at) VALUES ('{$post['category']}', NOW(), NOW())";
+            $this->db->query($query);
+        }
     }
 
      //insert the new product into database
