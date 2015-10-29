@@ -39,11 +39,13 @@
 				<th>Total</th>
 			</thead>
 			<tbody>
+				<?php foreach ($orders as $order) { ?>
 				<td>1</td>
 				<td>1</td>
 				<td>1</td>
 				<td>1</td>
 				<td>1</td>
+			} ?>
 			</tbody>
 		</table>
 	</div>

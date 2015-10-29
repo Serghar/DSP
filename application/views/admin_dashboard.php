@@ -24,7 +24,7 @@
                        {
                             for (var i = 0; i <display.length; i++)
                             {
-                                row += "<tr><td><a href='/admins/show/" + display[i].orders_id  + "'>"+ display[i].orders_id + "</a></td><td>" + display[i].name + "</td><td>" + display[i].created_at + "</td><td>" + display[i].billing_id + "</td><td>" + display[i].total + "</td><td><select><option value='" + display[i].status + "'>" + display[i].status + "</option><option value='In Process'>In Process</option><option value='Cancelled'>Cancelled</option><option value='Shipped'>Shipped</option> </select></td></tr>";
+                                row += "<tr><td><a href='/admins/show/" + display[i].id  + "'>"+ display[i].id + "</a></td><td>" + display[i].first_name + "</td><td>" + display[i].created_at + "</td><td>" + display[i].street + " " + display[i].city + " " + display[i].state + " " + display[i].zipcode + "</td><td>" + display[i].total + "</td><td><select><option value='" + display[i].status + "'>" + display[i].status + "</option><option value='In Process'>In Process</option><option value='Cancelled'>Cancelled</option><option value='Shipped'>Shipped</option> </select></td></tr>";
                             }    
                         }
                         else 
@@ -33,7 +33,7 @@
                             {
                                 if (disp_type == display[i].status)
                                 {
-                                    row += "<tr><td><a href='/admins/show/" + display[i].orders_id  + "'>"+ display[i].orders_id + "</a></td><td>" + display[i].name + "</td><td>" + display[i].created_at + "</td><td>" + display[i].billing_id + "</td><td>" + display[i].total + "</td><td><select><option value='" + display[i].status + "'>" + display[i].status + "</option><option value='In Process'>In Process</option><option value='Cancelled'>Cancelled</option><option value='Shipped'>Shipped</option> </select></td></tr>";
+                                    row += "<tr><td><a href='/admins/show/" + display[i].id  + "'>"+ display[i].id + "</a></td><td>" + display[i].first_name + "</td><td>" + display[i].created_at + "</td><td>" + display[i].street + " " + display[i].city + " " + display[i].state + " " + display[i].zipcode + "</td><td>" + display[i].total + "</td><td><select><option value='" + display[i].status + "'>" + display[i].status + "</option><option value='In Process'>In Process</option><option value='Cancelled'>Cancelled</option><option value='Shipped'>Shipped</option> </select></td></tr>";
                                 }
                             }
                         }
@@ -87,10 +87,10 @@
             <tbody>
                 <?php 
                 foreach ($orders as $order) {
-                    echo "<tr><td><a href='/admins/show/" . $order['orders_id'] . "'>" . $order['orders_id'] . "</a></td>";
-                    echo "<td>" . $order['name'] . "</td>";
+                    echo "<tr><td><a href='/admins/show/" . $order['id'] . "'>" . $order['id'] . "</a></td>";
+                    echo "<td>" . $order['first_name'] . "</td>";
                     echo "<td>" . $order['created_at'] . "</td>";
-                    echo "<td>" . $order['billing_id'] . "</td>";
+                    echo "<td>" . $order['street'] . " " . $order['city'] . " " . $order['state'] . " " . $order['zipcode'] . "</td>";
                     echo "<td>" . $order['total'] . "</td>";
                     echo "<td><form action='/admins/update_order/' method='post'><select id='status_change'><option value= {$order['status']}>{$order['status']}</option><option value='In Process'>In Process</option><option value='Cancelled'>Cancelled</option><option value='Shipped'>Shipped</option> </select></form></td></tr>";
                 } ?> 

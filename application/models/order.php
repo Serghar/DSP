@@ -54,4 +54,17 @@ class Order extends CI_Model {
             $this->db->query($query, $values);
         }
      }
+     //actually allows all elements of admin order display table to display
+     public function display_orders()
+     {
+        $query = "SELECT orders.id, addresses.first_name, orders.created_at, addresses.street, addresses.city, addresses.state, addresses.zipcode, orders.total, orders.status FROM orders LEFT JOIN users ON orders.user_id = users.id LEFT JOIN addresses ON users.shipping_id = addresses.id";
+        return $this->db->query($query)->result_array();
+     }
+     //gathers necessary information for order show page
+     public function individual_order($id)
+     {
+        $query = "SELECT orders.id, addresses.first_name, addresses.street, addresses.city, addresses.state, addresses.zipcode, users.billing_id, products_in_orders.quantity FROM orders LEFT JOIN products_in_orders ON orders.id = products_in_orders.order_id LEFT JOIN users ON orders.user_id = users.id LEFT JOIN addresses ON users.shipping_id = addresses.id LEFT JOIN addresses ON users.billing_id = addresses.id  WHERE orders.id = ?";
+        $values = $id;
+        return $this->db->query($query,$values)->result_array();
+     }
  } ?>

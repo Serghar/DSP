@@ -130,8 +130,6 @@ class Products extends CI_Controller {
 	//updates the product information
 	public function update()
 	{
-		var_dump($this->input->post());
-		die();
 		if ($this->session->userdata('admin'))
 		{
 			$result = $this->product->validate_product($this->input->post());
@@ -167,13 +165,27 @@ class Products extends CI_Controller {
 		}
 	}
 
-	//create a new category
+	//create a new category and returns current categories as JSON information
 	public function new_category()
 	{
 		if ($this->session->userdata('admin'))
 		{
 			$this->product->new_category($this->input->post());
-			redirect("/products/add");
+			redirect("/products/get_categories");
+		}
+		else
+		{
+			redirect("/");
+		}
+	}
+
+	//return categories as JSON information
+	public function get_categories()
+	{
+		if ($this->session->userdata('admin'))
+		{
+			$categories = $this->product->get_categories();
+			echo json_encode($categories);
 		}
 		else
 		{
