@@ -28,7 +28,16 @@ class User extends CI_Model {
     	}
     	else
     	{
-    		//need to edit this to update the user info with info passed
+    		//updates user info if it has changed and then returns user id
+    		$query = "UPDATE users
+				SET card_number = '{$card_number}',
+				security_code = '{$security_code}',
+				expiration_date = '{$expiration_date}',
+				billing_id = '{$billing_id}',
+				shipping_id = '{$shipping_id}',
+				updated_at = NOW()
+				WHERE id = '{$user_id['id']}'";
+			$this->db->query($query);
     		return $user_id['id'];
     	}
     }
