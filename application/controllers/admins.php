@@ -125,10 +125,12 @@ class Admins extends CI_Controller {
 	{
 		$infos = $this->order->billing_shipping($id);
 		$orders = $this->order->order_breakdown($id);
+		$status = $this->order->order_status_update($id);
 		$this->load->view('order_show', array(
 			"id" => $id,
 			"infos" => $infos,
-			"orders" => $orders
+			"orders" => $orders,
+			"status" => $status
 			));
 	}
 	//allows admin to update order status

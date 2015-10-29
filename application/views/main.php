@@ -9,6 +9,7 @@ $cartSize = count($this->session->userdata('cart'));
     <meta charset="UTF-8">
     <title>Welcome to our site</title>
     <link rel="stylesheet" type="text/css" href="assets/main.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">  -->
 </head>
 <body>
     <div id="container">
@@ -26,7 +27,8 @@ $cartSize = count($this->session->userdata('cart'));
             { ?>
                 <a href="/products/show/<?=$product['id']?>">
                     <li class="product">
-                        <div class="product-info" style="background-image: url('assets/temp.jpg')">
+                        <div class="product-info">
+                            <img src='/assets/photo_<?= $product['id']?>.jpg' height=140 width=140>
                             <p>Price: $<?=$product['price']?></p>
                         </div>
                         <h2><?=$product['name']?></h2>

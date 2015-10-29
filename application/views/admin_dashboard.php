@@ -57,8 +57,8 @@
                 <input type='text' name='search' placeholder='search' style='background-color: #22A7F0; color: #FDE3A7; border: 1px solid #6C7A89'>
                 <input type='hidden' name='display_type' value='submit'>
             </form>
-            <a class='col-md-3 pull-right' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
-            <a class='col-md-3 pull-right' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
+            <a class='col-md-3 pull-left' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
+            <a class='col-md-3 pull-left' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
             <a class='col-md-3 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
             <br><br>
         </div>
@@ -91,7 +91,7 @@
                     echo "<td>" . $order['first_name'] . "</td>";
                     echo "<td>" . $order['created_at'] . "</td>";
                     echo "<td>" . $order['street'] . " " . $order['city'] . " " . $order['state'] . " " . $order['zipcode'] . "</td>";
-                    echo "<td>" . $order['total'] . "</td>";
+                    echo "<td> $" . $order['total'] . "</td>";
                     echo "<td><form action='/admins/update_order/' method='post'><select id='status_change'><option value= {$order['status']}>{$order['status']}</option><option value='In Process'>In Process</option><option value='Cancelled'>Cancelled</option><option value='Shipped'>Shipped</option> </select></form></td></tr>";
                 } ?> 
             </tbody>
