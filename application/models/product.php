@@ -69,15 +69,27 @@ class Product extends CI_Model {
      }
 
      //update the products information
-     public function edit_product($post)
+     public function update_product($post)
      {
-
+        $query = "UPDATE products SET name='{$post['name']}', description='{$post['description']}', price='{$post['price']}'
+                    WHERE id = '{$post['id']}'";
+        $this->db->query($query);
      }
 
      //remove a connection of a category to a product
      public function remove_category_connection($prod_id, $cat_id)
      {
+        $query = "DELETE FROM products_has_categories
+                    WHERE product_id = '{$prod_id}' AND category_id = '{$cat_id}'";
+        $this->db->query($query);
+     }
 
+     //add a single category connection
+      public function category_connection($prod_id, $cat_id)
+     {
+        $query = "INSERT INTO products_has_categories (product_id, category_id)
+                    VALUES ('{$prod_id}', '{$cat_id}')";
+        $this->db->query($query);
      }
 
      //adds to the products_has_categories table so that products and categories are connected
