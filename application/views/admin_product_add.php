@@ -8,7 +8,7 @@
     <script>
         $(document).ready(function(){
         	//load the avaliable categories
-        	$.get("products/get_categories", function(res) {
+        	$.get("/products/get_categories", function(res) {
             	build_cats(res);
         	}, 'json');
 
@@ -106,24 +106,11 @@
 			<ul id="current-cats">
 			</ul>
 		</form>
-<<<<<<< HEAD
-	<h4>Select a category to add:</h4><br>
-	<div>
-		<?php foreach($categories as $category)
-		{ ?>
-			<button class="category" cat_id="<?=$category['id']?>"><?=$category['name']?></button>
-		<?php } ?>
-	</div><br>
-	
-	<p><strong>Or add a new category:</strong></p>
-	<form action="/products/new_category" method="post">
-=======
 	<h4>Select a category to add:</h4>
 	<div id="categories">
 	</div>
 	
 	<form id="new-category" action="/products/new_category" method="post">
->>>>>>> 16e46f06392b2382d35ed533af6fe650cbbd6d56
 		<input type="text" name="category" placeholder="New category..">
 		<input type='submit' value='Add Category'></p>
 	</form>

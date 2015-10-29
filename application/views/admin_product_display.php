@@ -88,6 +88,6 @@
                     } ?>
         </tbody>
     </table>
-    <button name='Add'><a href='/admins/create'>Add new product</a></button>
+    <button name='Add'><a href='/products/add'>Add new product</a></button>
 </body>
 </html>

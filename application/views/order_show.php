@@ -21,10 +21,10 @@
 			<p>Order ID: <?= $id ?></p>
 			<p></p>
 			<p><strong>Customer shipping info: </strong></p>
-			<p>Name: Address: City: State: Zip: </p>
+			<p>Name: <?= $infos['first_name'] ?> Address: <?= $infos['street'] ?> City: <?= $infos['city'] ?> State: <?= $infos['state'] ?> Zip: <?= $infos['zipcode'] ?> </p>
 			<p></p>
 			<p><strong>Customer billing info: </strong></p>
-			<p>Name: Address: City: State: Zip: </p>
+			<p>Name: <?= $infos['billing_name'] ?> Address: <?= $infos['billing_street'] ?>City: <?= $infos['billing_city'] ?> State: <?= $infos['billing_state'] ?> Zip: <?= $infos['billing_zipcode'] ?> </p>
 		</div>
 	</div>
 </div>
@@ -39,13 +39,14 @@
 				<th>Total</th>
 			</thead>
 			<tbody>
-				<?php foreach ($orders as $order) { ?>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-			} ?>
+				<tr>
+				<?php foreach ($orders as $order) { 
+					echo "<td>" + $order['product_id'] + "</td>";
+					echo "<td>" + $order['name'] + "</td>";
+					echo "<td>" + $order['price'] + "</td>";
+					echo "<td>" + $order['quantity'] + "</td><";
+			 } ?>
+			</tr>
 			</tbody>
 		</table>
 	</div>
@@ -63,3 +64,4 @@
 	</div>
 </div>
 </body>
+</html>

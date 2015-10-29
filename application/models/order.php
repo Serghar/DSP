@@ -67,4 +67,17 @@ class Order extends CI_Model {
         $values = $id;
         return $this->db->query($query,$values)->result_array();
      }
+     //displays order shipping and billing info for order view page
+     public function billing_shipping($id)
+     {
+        $query = "SELECT orders.id, addresses.first_name, addresses.street, addresses.city, addresses.state, addresses.zipcode, billings.first_name AS billing_name, billings.street AS billing_street, billings.city AS billing_city, billings.state AS billing_state, billings.zipcode AS billing_zipcode FROM addresses LEFT JOIN users ON addresses.id = users.shipping_id LEFT JOIN addresses AS billings ON billings.id = users.billing_id LEFT JOIN orders ON users.id = orders.user_id WHERE orders.id = ?";
+        $values = $id;
+        return $this->db->query($query,$values)->row_array();
+     }
+     public function order_breakdown($id)
+     {
+        $query = "SELECT products.id AS product_id, products.name, products.price, products_in_orders.quantity FROM products_in_orders LEFT JOIN orders ON products_in_orders.order_id = orders.id LEFT JOIN products ON products_in_orders.product_id = products.id WHERE orders.id = ?";
+        $values = $id;
+        return $this->db->query($query,$values)->result_array();
+     }
  } ?>

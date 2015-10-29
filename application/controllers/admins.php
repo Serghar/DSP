@@ -123,8 +123,12 @@ class Admins extends CI_Controller {
 	//allows admin to click order ID and take him/her to specific order page
 	public function show($id)
 	{
+		$infos = $this->order->billing_shipping($id);
+		$orders = $this->order->order_breakdown($id);
 		$this->load->view('order_show', array(
-			"id" => $id
+			"id" => $id,
+			"infos" => $infos,
+			"orders" => $orders
 			));
 	}
 	//allows admin to update order status
