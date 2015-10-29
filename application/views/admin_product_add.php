@@ -5,13 +5,15 @@
 	<title>Create a new product</title>
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script>
-        $(document).ready(function(){
-        	//load the avaliable categories
-        	$.get("products/get_categories", function(res) {
-            	build_cats(res);
-        	}, 'json');
 
+        $(document).ready(function(){
+            //load the avaliable categories
+            $.get("/products/categories_json", function(res) {
+                build_cats(res);
+            }, 'json');
+            
         	var cats = {};
+            console.log(cats);
             $(document).on("click", "button.category", function() {
             	var id = $(this).attr("cat_id");
             	var name = $(this).html();
