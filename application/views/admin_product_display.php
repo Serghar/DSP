@@ -35,7 +35,7 @@
 </head>	
 <body>
     <div class='container'>
-        <div class='row' style='background-color: #22A7F0'><br>
+        <div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'><br>
             <div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; front-weight: 300'>Dashboard</div>
             <form class='col-lg-3 pull-right' action='/admins/products_json' method='post'>
                 <input type='text' id='search_box' name='search' placeholder='Search' style='background-color: #22A7F0; color: #FDE3A7; border: 1px solid #6C7A89'>

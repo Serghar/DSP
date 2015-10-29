@@ -28,7 +28,7 @@ class Order extends CI_Model {
         $query = "UPDATE orders SET status = ?";
         $values = $post;
         $this->db->query($query,$values);
-
+    }
      public function add_order($user_id)
      {
         $cart = $this->session->userdata('cart');

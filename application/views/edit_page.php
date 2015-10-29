@@ -31,8 +31,17 @@
 </head>	
 <body>
 <div class='container' style='background-color: #22A7F0'>
-	<div class='row'><br>
-		<div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300px'>Edit Product - ID <?= $product['id'] ?> </div>
+	<div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'><br>
+		<div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Dashboard</div>
+		<a class='col-md-3 pull-right' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
+            <a class='col-md-3 pull-right' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
+            <a class='col-md-3 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
+            <br><br>
+    </div>
+</div>
+<div class='container' style='background-color: #A2DED0'><br>
+	<div class='row'>
+		<div class='col-md-3 pull-left' style='color: black; font-size: 16px; font-weight: 300px'><strong>Edit Product - ID <?= $product['id'] ?> </strong></div>
 	</div>
 	<div class='row'>
 		<div class='col-md-4'></div>

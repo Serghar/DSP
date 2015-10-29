@@ -50,7 +50,7 @@
 </head>	
 <body>
     <div class='container'>
-        <div class='row' style='background-color: #22A7F0'>
+        <div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'>
             <br>
             <div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Dashboard</div>
             <form class='col-lg-3 pull-right' action='/admins/order_search' method='post'>
