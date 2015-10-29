@@ -78,7 +78,6 @@ class Products extends CI_Controller {
 			{
 				unset($cart[$key]);
 			}
-			var_dump($cart);
 		}
 		$this->session->set_userdata('cart', $cart);
 		redirect("/cart");
