@@ -171,7 +171,7 @@ class Products extends CI_Controller {
 		if ($this->session->userdata('admin'))
 		{
 			$this->product->new_category($this->input->post());
-			redirect("/products/get_categories");
+			redirect("/products/categories_json");
 		}
 		else
 		{
@@ -179,8 +179,8 @@ class Products extends CI_Controller {
 		}
 	}
 
-	//return categories as JSON information
-	public function get_categories()
+	//return all categories as JSON information
+	public function categories_json()
 	{
 		if ($this->session->userdata('admin'))
 		{
@@ -193,4 +193,17 @@ class Products extends CI_Controller {
 		}
 	}
 
+	//return categories as JSON from a single product
+	public function product_categories_json($prod_id)
+	{
+		if ($this->session->userdata('admin'))
+		{
+			$categories = $this->product->get_product_categories($prod_id);
+			echo json_encode($categories);
+		}
+		else
+		{
+			redirect("/");
+		}
+	}
 } ?>
