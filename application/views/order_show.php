@@ -18,7 +18,7 @@
 <div class='container' style='background-color: #A2DED0'><br>
 	<div class='row'>
 		<div id='order_customer' style='padding: 5px; margin: 5px; height: 200; border: 1px solid black'>
-			<p>Order ID: <?= $id ?></p>
+			<p><strong>Order ID:</strong> <?= $id ?></p>
 			<p></p>
 			<p><strong>Customer shipping info: </strong></p>
 			<p>Name: <?= $infos['first_name'] ?> Address: <?= $infos['street'] ?> City: <?= $infos['city'] ?> State: <?= $infos['state'] ?> Zip: <?= $infos['zipcode'] ?> </p>
@@ -39,14 +39,9 @@
 				<th>Total</th>
 			</thead>
 			<tbody>
-				<tr>
 				<?php foreach ($orders as $order) { 
-					echo "<td>" + $order['product_id'] + "</td>";
-					echo "<td>" + $order['name'] + "</td>";
-					echo "<td>" + $order['price'] + "</td>";
-					echo "<td>" + $order['quantity'] + "</td><";
+					echo "<tr><td>{$order['product_id']}</td><td>{$order['name']}</td><td>{$order['price']}</td><td>{$order['quantity']}</td><td>{$order['total']}</td></tr>";
 			 } ?>
-			</tr>
 			</tbody>
 		</table>
 	</div>
@@ -54,12 +49,10 @@
 <div class='container' style='background-color: #A2DED0'>
 	<div class='div-inline' style='display: block'>
 		<div id='ord_costs' style='background-color: #A2DED0; border: 1px solid black; width: 190px; padding: 5px; margin: 5px' class='pull-right'>
-			<p>Sub total: </p>
-			<p>Shipping: </p>
-			<p>Total Price: </p>
+			<p>Total Price: $<?= $status['total'] ?></p>
 		</div>
 		<div id='ord_status' style='background-color: #A2DED0; border: 1px solid black; width: 190px; padding: 5px; margin: 5px' class='pull-right'>
-			<p>Status: </p>
+			<p>Status: <?= $status['status']?></p>
 		</div>
 	</div>
 </div>

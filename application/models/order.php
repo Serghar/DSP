@@ -76,8 +76,14 @@ class Order extends CI_Model {
      }
      public function order_breakdown($id)
      {
-        $query = "SELECT products.id AS product_id, products.name, products.price, products_in_orders.quantity FROM products_in_orders LEFT JOIN orders ON products_in_orders.order_id = orders.id LEFT JOIN products ON products_in_orders.product_id = products.id WHERE orders.id = ?";
+        $query = "SELECT products.id AS product_id, products.name, products.price, products_in_orders.quantity, products.price * products_in_orders.quantity AS total FROM products_in_orders LEFT JOIN orders ON products_in_orders.order_id = orders.id LEFT JOIN products ON products_in_orders.product_id = products.id WHERE orders.id = ?";
         $values = $id;
         return $this->db->query($query,$values)->result_array();
+     }
+     public function order_status_update($id)
+     {
+        $query = "SELECT status, total FROM orders WHERE id = ?";
+        $values = $id;
+        return $this->db->query($query,$values)->row_array();
      }
  } ?>

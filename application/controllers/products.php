@@ -156,7 +156,7 @@ class Products extends CI_Controller {
 		if ($this->session->userdata('admin'))
 		{
 			$this->product->delete_product($id);
-			redirect("/admins");
+			redirect("/admins/products");
 		}
 		else
 		{
