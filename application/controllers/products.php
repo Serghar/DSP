@@ -179,6 +179,38 @@ class Products extends CI_Controller {
 		}
 	}
 
+	//add a new category to the product
+	public function add_category()
+	{
+		
+		if ($this->session->userdata('admin'))
+		{
+			$prod_id = $this->input->post('product_id');
+			$cat_id = $this->input->post('category_id');
+			$this->product->category_connection($prod_id, $cat_id);
+		}
+		else
+		{
+			redirect("/");
+		}
+	}
+
+	//remove a category from the product
+	public function remove_category()
+	{
+		
+		if ($this->session->userdata('admin'))
+		{
+			$prod_id = $this->input->post('product_id');
+			$cat_id = $this->input->post('category_id');
+			$this->product->remove_category_connection($prod_id, $cat_id);
+		}
+		else
+		{
+			redirect("/");
+		}
+	}
+
 	//return all categories as JSON information
 	public function categories_json()
 	{

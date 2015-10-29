@@ -79,12 +79,8 @@ class Admins extends CI_Controller {
 	public function edit_product($id)
 	{
 		$product = $this->product->get_product_info($id);
-		$categories = $this->product->get_product_categories($id);
-		$all_categories = $this->product->get_categories();
 		$this->load->view('edit_page', array(
-			"product" => $product,
-			"product_categories" => $categories,
-			"all_categories" => $all_categories
+			"product" => $product
 			));
 	}
 
