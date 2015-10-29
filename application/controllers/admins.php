@@ -12,7 +12,7 @@ class Admins extends CI_Controller {
 	{
 		if ($this->session->userdata('admin'))
 		{
-			$orders = $this->order->get_all_orders();
+			$orders = $this->order->display_orders();
 			$products = $this->product->get_all_products();
 			$this->load->view('admin_dashboard', array(
 				"products" => $products,
@@ -65,9 +65,10 @@ class Admins extends CI_Controller {
 
 	public function orders()
 	{
-		$orders = $this->order->get_all_orders();
+		// $orders = $this->order->get_all_orders();
 		$products = $this->product->get_all_products();
-		$orders = $this->order->get_all_orders();
+		$orders = $this->order->display_orders();
+		// $orders = $this->order->get_all_orders();
 		// $this->session->sess_destroy();
 		$this->load->view('admin_dashboard', array(
 			"products" => $products,
@@ -94,7 +95,7 @@ class Admins extends CI_Controller {
 	//this allows the admin to change the orders dashboard view by 'show all', 'shipped', 'in process'
 	public function order_display()
 	{
-		echo json_encode($this->order->get_all_orders());
+		echo json_encode($this->order->display_orders());
 		// $orders = $this->order->get_selected_orders($this->input->post());
 		// $this->load->view('admin_dashboard', array(
 			// "orders" => $orders
@@ -104,7 +105,7 @@ class Admins extends CI_Controller {
 	public function order_search()
 	{
 		$order = $this->order->find_order($this->input->post());
-		$orders = $this->order->get_all_orders();
+		$orders = $this->order->display_orders();
 		$this->load->view('admin_dashboard', array(
 			'order' => $order,
 			'orders'=> $orders
@@ -118,9 +119,18 @@ class Admins extends CI_Controller {
 	//allows admin to click order ID and take him/her to specific order page
 	public function show($id)
 	{
+		$infos = $this->order->billing_shipping($id);
+		$orders = $this->order->order_breakdown($id);
 		$this->load->view('order_show', array(
-			"id" => $id
+			"id" => $id,
+			"infos" => $infos,
+			"orders" => $orders
 			));
+	}
+	//allows admin to update order status
+	public function update_order()
+	{
+		$this->order->change_status($this->input->post());
 	}
 
 

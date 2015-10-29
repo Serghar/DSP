@@ -9,11 +9,7 @@
 <head>
 	<meta charset='UTF-8'>
 	<title>Edit Product Page</title>
-	
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-	<!-- JQuery Library -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> 
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
@@ -102,14 +98,27 @@
 
 </head>	
 <body>
-	<h2>Edit Product -ID- <?= $product['id'] ?> </h2>
-	<form action='/products/update' method='post'>
-		<input type="hidden" name="id" value="<?=$product['id']?>">
-		<p>Name: <input type='text' name='name' value='<?= $product['name']?>'></p>
+	<div class='container' style='background-color: #22A7F0'>
+		<div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'><br>
+			<div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Dashboard</div>
+			<a class='col-md-3 pull-right' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
+	            <a class='col-md-3 pull-right' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
+	            <a class='col-md-3 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
+	            <br><br>
+	    </div>
+	</div>
+	<div class='container' style='background-color: #A2DED0'><br>
+		<div class='row'>
+			<div class='col-md-3 pull-left' style='color: black; font-size: 16px; font-weight: 300px'><strong>Edit Product - ID <?= $product['id'] ?> </strong></div>
+		</div>
+		<div class='row'>
+			<div class='col-md-4'></div>
+			<div class='col-md-4'><br>
+			<form action='/products/update' method='post'>
+		<p>Name: <input class='col-md-4' type='text' name='name' value='<?= $product['name']?>'></p>
 		<p>Description:</p>
-		<textarea name='description'><?= $product['description']?></textarea>
-		<p>Price: <input type='text' name='price' value='<?=$product['price']?>'></p>
-		<input type="submit" value="update">
+		<textarea class='col-md-8' cols=25 rows=5 name='description'><?= $product['description']?></textarea><br><br>
+		<p>Price: <input class='col-md-4' style='width:182px'type='text' name='price' value='<?=$product['price']?>'></p>
 	</form>
 	<p>Current Product Categories:</p>
 	<div id="categories">
@@ -117,10 +126,15 @@
 	<h4>Select a category to add:</h4>
 	<div id="new-categories">
 	</div>
-
+	<br>
+	<div class='row'>
+		<div class='col-md-4'><strong>Or add a new category: </strong></div>
+	</div>
+	<br>
 	<form id="new-category" action="/products/new_category" method="post">
-		<input type="text" name="category" placeholder="New category..">
-		<input type='submit' value='Add Category'></p>
+			<input type="text" name="category" placeholder="New category..">
+			<input type='submit' value='Add Category'></p>
 	</form>
+	</div>
 </body>
 </html>
