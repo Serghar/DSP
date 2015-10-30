@@ -11,16 +11,19 @@ class User extends CI_Model {
 		$shipping_id = $this->get_address_id($post['shipping_first_name'], $post['shipping_last_name'], $post['shipping_address'], $post['shipping_address_2'], $post['shipping_city'], $post['shipping_state'], $post['shipping_zipcode']);
         
         //User Info
-        $user_id = $this->user_update($post['email'], $post['password'], $post['card_number'], $post['security_code'], $post['expiration_date'], $billing_id, $shipping_id);
+        $expiration_date = $post["expiration_month"] . "-" . $post["expiration_year"];
+        $user_id = $this->user_update($post['email'], $post['card_number'], $post['security_code'], $expiration_date, $billing_id, $shipping_id);
         return $user_id;
     }
 
-    public function user_update($email, $password, $card_number, $security_code, $expiration_date, $billing_id, $shipping_id)
+    public function user_update($email, $card_number, $security_code, $expiration_date, $billing_id, $shipping_id)
     {
     	//check if the user already exists on file
     	$user_id = $this->db->query("SELECT id FROM users WHERE email = '{$email}'")->row_array();
     	if(empty($user_id))
     	{
+    		//Create the default guest password
+    		$password = "27!27d8qq7s9As82jAs9812jN";
     		$query = "INSERT INTO users(email, password, card_number, security_code, expiration_date, CREATED_AT, UPDATED_AT, billing_id, shipping_id) VALUES (?, ?, ?, ?, ?, NOW(), NOW(), ?, ?)";
         	$values = array($email, $password, $card_number, $security_code, $expiration_date, $billing_id, $shipping_id);
        		$this->db->query($query, $values);
@@ -68,35 +71,33 @@ class User extends CI_Model {
 		}
     }
 
-	public function login_process($post)
+	public function validate_information($post)
 	{
-
-		//Email Validation
-		$this->form_validation->set_rules("email", "Email", "trim|valid_email|required");
-
-		//Password Validation
-		$this->form_validation->set_rules("password", "Password", "trim|min_length[8]|required");
-
-		if($this->form_validation->run() === FALSE)
-		{
-			$this->session->set_flashdata("errors", validation_errors() );
-		} 
-		else 
-		{
-			$login_query = "SELECT 
-
-				first_name, last_name, email, password, card_number, security_code, expiration_date,
-
-				billing_id, billing.street as b_street, billing.address_2 as b_address_2, billing.state as b_state, billing.city as b_city, billing.zipcode as b_zipcode,
-
-				shipping_id, shipping.street as s_street, shipping.address_2 as s_address_2, shipping.state as s_state, shipping.city as s_city, shipping.zipcode as s_zipcode
-
-			 FROM USERS JOIN addresses AS billing ON users.billing_id = billing.id JOIN addresses AS shipping ON users.shipping_id = shipping.id WHERE users.email = ? AND users.password = ?";
-
-			$login_values = array($post['email'], $post['password']);
-
-			return $this->db->query($login_query, $login_values)->row_array();
-		}
+		$this->form_validation->set_rules("billing_first_name", "Billing First Name", "trim|required|alpha_dash");
+		$this->form_validation->set_rules("billing_last_name", "Billing Last Name", "trim|required|alpha_dash");
+		$this->form_validation->set_rules("billing_address", "Billing Address", "trim|required");
+		$this->form_validation->set_rules("billing_city", "Billing City", "trim|required");
+		$this->form_validation->set_rules("billing_state", "Billing State", "trim|required|min_length[2]|max_length[2]|alpha");
+		$this->form_validation->set_rules("billing_zipcode", "Billing Zipcode", "trim|required|min_length[5]|max_length[5]|integer");
+		$this->form_validation->set_rules("shipping_first_name", "Shipping First Name", "trim|required|alpha_dash");
+		$this->form_validation->set_rules("shipping_last_name", "Shipping Last Name", "trim|required|alpha_dash");
+		$this->form_validation->set_rules("shipping_address", "Shipping Address", "trim|required");
+		$this->form_validation->set_rules("shipping_city", "Shipping City", "trim|required");
+		$this->form_validation->set_rules("shipping_state", "Shipping State", "trim|required|min_length[2]|max_length[2]|alpha");
+		$this->form_validation->set_rules("shipping_zipcode", "Shipping Zipcode", "trim|required|min_length[5]|max_length[5]|integer");
+		$this->form_validation->set_rules("card_number", "Credit Card Number", "trim|required|min_length[13]|max_length[19]|alpha_dash");
+		$this->form_validation->set_rules("security_code", "Security Code", "trim|required|min_length[3]|max_length[4]|integer");
+		$this->form_validation->set_rules("expiration_month", "Expiration Month", "trim|required|min_length[1]|max_length[2]|integer");
+		$this->form_validation->set_rules("expiration_year", "Expiration Year", "trim|required|min_length[4]|max_length[4]|integer");
+		$this->form_validation->set_rules("email", "Email", "trim|required|valid_email");
+        if($this->form_validation->run())
+        {
+            return "valid";
+        }
+        else
+        {
+            return validation_errors();
+        }
 	}
 }
 

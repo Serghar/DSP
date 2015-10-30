@@ -4,33 +4,40 @@ class Users extends CI_Controller {
 
 	public function index()
 	{
-		//Showing the Login Page partial
-		//This should be ajaxed on the purchase page eventually
-		$this->load->view('partials/login_page');
-		
-		//Showing the Purchase Page
-		$this->load->view('purchase_page');
 	}
 
 	public function purchase_process()
 	{
+		var_dump($this->input->post());
 		//validate purchase form information here first!!
+		$status = $this->user->validate_information($this->input->post());
+		if ($status == "valid")
+		{
+			//create the user, billing address, and shipping address as needed
+			$user_id = $this->user->user_process($this->input->post());
 
-		//create the user, billing address, and shipping address as needed
-		$user_id = $this->user->user_process($this->input->post());
+			//using the ids from the previous 3 and the session cart create the order
+			$this->order->add_order($user_id);
 
-		//using the ids from the previous 3 and the session cart create the order
-		$this->order->add_order($user_id);
+			//clear the old cart
+			$this->session->set_userdata("cart", array());
 
-		//clear the old cart
-		$this->session->set_userdata("cart", array());
+			//go to order confirmation page
+			redirect("/users/confirm_order");
 
-		//go to order confirmation page
-		redirect("/users/confirm_order");
+			//for JSON later
+			//echo "order confirmation";
+
+		}
+		else
+		{
+			echo $status;
+			die();
+		}	
 	}
 
 	//loads a confirmation page
-	//THIS COULD BE CHANGED TO A JAVASCRIPT MESSAGE THAT THEN LOADS HOME INSTEAD
+	//Make it so this page reviews the order and would provide an order number
 	public function confirm_order()
 	{
 		//display confirmation page
@@ -44,19 +51,17 @@ class Users extends CI_Controller {
 
 	public function login_process()
 	{
-
-		$login_user = $this->user->login_process($this->input->post() );
-
-		if( empty($login_user) )
+		die("this need to be made still!");
+		/*$status = $this->user->validate_user($this->input->post());
+		if($status == "valid")
 		{
-			$this->session->set_flashdata("errors", "Couldnt Find user. Please Re-enter Email and Password" );
-			redirect('login_page');
+
 		}
 		else
 		{
-			$this->session->set_userdata($login_user);
-			$this->load->view('login_purchase_page', array("login_user" => $login_user) );
-		}
+			//echo back the errors
+			echo $status;
+		}*/
 	}
 
 	public function logout()

@@ -6,14 +6,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> 
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script>
-// <<<<<<< HEAD
-//         $(document).ready(function(){
-//         	//load the avaliable categories
-//         	$.get("/products/get_categories", function(res) {
-//             	build_cats(res);
-//         	}, 'json');
-// =======
-// >>>>>>> 22ea9b690ff23b2316c2348201c49e7295631246
 
         $(document).ready(function(){
             //load the avaliable categories
