@@ -13,8 +13,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type='text/javascript'>
             $(document).ready(function() {
-
-                //THIS SHIT RIGHT HERE!
                 $('#order_disp').change(function(){
                     $.get('/admins/order_display', function(display){
                        var row = "<thead><th>Order ID</th><th>Name</th><th>Date</th><th>Billing Address</th><th>Total</th><th>Status</th></thead>";
@@ -83,7 +81,7 @@
                 <th>Total</th>
                 <th>Status</th>
             </thead>
-            <tbody>
+            <tbody> 
                 <?php 
                 foreach ($orders as $order) {
                     echo "<tr><td><a href='/admins/show/" . $order['id'] . "'>" . $order['id'] . "</a></td>";
@@ -91,11 +89,11 @@
                     echo "<td>" . $order['created_at'] . "</td>";
                     echo "<td>" . $order['street'] . " " . $order['city'] . " " . $order['state'] . " " . $order['zipcode'] . "</td>";
                     echo "<td> $" . $order['total'] . "</td>";
-                    echo "<td><form action='/admins/update_order/' method='post'><select id='status_change'><option value= {$order['status']}>{$order['status']}</option><option value='In Process'>In Process</option><option value='Cancelled'>Cancelled</option><option value='Shipped'>Shipped</option> </select></form></td></tr>";
+                    echo "<td><form id='status_change' action='/admins/update_order' method='post'><select onchange='this.form.submit()' name={$order['id']}><option value= {$order['status']}>{$order['status']}</option><option value='In Process'>In Process</option><option value='Cancelled'>Cancelled</option><option value='Shipped'>Shipped</option> </select></form></td></tr>";
                 } ?> 
             </tbody>
         </table>
-        <a href="/products/add"><button>Add new Product</button></a>
+        <a href="/products/add"><button type="button" class="btn btn-primary">Add new Product</button></a>
         </div>
     </div>
 </body>
