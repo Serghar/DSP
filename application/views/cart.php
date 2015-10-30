@@ -51,7 +51,7 @@ $total = 0;
 
 </head>
 <body>
-	<div class="row" style='background-color: #E4F1FE; padding-bottom: 600px'>
+	<div class="row">
   		<div class="col-md-8 col-md-offset-2">
 			<h1>Current Cart</h1>
 			<?php if ($has_items)

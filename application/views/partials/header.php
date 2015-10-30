@@ -81,7 +81,7 @@ $cartSize = count($this->session->userdata('cart'));
         <div class='row' style='background-color: #89C4F4; border-bottom: 1px solid #BE90D4'><br>
             <div class='col-md-2' style='font-size: 18px; color: #EEEEEE'><a style='text-decoration: none; color: #EEEEEE' href='/products'>MICROPRISM</a></div>
             <div class='col-md-5' style='font-size: 18px; color: #EEEEEE'>Curating / Selling fine photography</div>
-            <div class='col-md-3 col-md-offset-1'><a style='font-size: 18px; color: #FDE3A7' href="/cart">Your Shopping Cart (<?=$cartSize?>)</a></div>
+            <div class='col-md-3 col-md-offset-1'><a style='font-size: 18px; color: #FDE3A7' href="/cart"><i class="fa fa-shopping-cart"></i> Your Shopping Cart (<?=$cartSize?>)</a></div>
             <?php if(!($this->session->userdata('user_id')))
             { ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Login</button>
