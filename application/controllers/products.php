@@ -22,9 +22,18 @@ class Products extends CI_Controller {
 	//shows the users current cart
 	public function cart()
 	{
+		//make this just part of a header partial that is loaded with all views
+		$this->load->view('partials/login_page');
+
 		$this->load->view("cart", array(
 			"products" => $this->session->userdata('cart')
-			));
+		));
+
+		//dont load checkout partial if cart is empty
+		if(!(empty($this->session->userdata('cart'))))
+		{
+			$this->load->view('partials/purchase_page');
+		}
 	}
 
 	//show a products info page
