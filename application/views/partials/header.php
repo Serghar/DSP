@@ -1,3 +1,8 @@
+<?php
+//get cart size
+$cartSize = count($this->session->userdata('cart'));
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +20,16 @@
 
 </head>
 <body>
-	<div id = "container">
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">Login</button>
-		<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="accountlogin">
+	<div class="container-fluid">
+        <div class='row' style='background-color: #89C4F4; border-bottom: 1px solid #BE90D4'><br>
+            <div class='col-md-2' style='font-size: 18px; color: #EEEEEE'><a style='text-decoration: none; color: #EEEEEE' href='/products'>MICROPRISM</a></div>
+            <div class='col-md-5' style='font-size: 18px; color: #EEEEEE'>Curating / Selling fine photography</div>
+            <div class='col-md-3 col-md-offset-1'><a style='font-size: 18px; color: #FDE3A7' href="/cart">Your Shopping Cart (<?=$cartSize?>)</a></div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">Login</button><br><br>
+        </div>
+
+    </div>
+	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="accountlogin">
 		  <div class="modal-dialog modal-sm" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -43,6 +55,5 @@
 		      </div>
 		   </div>
 		</div>
-	</div>
 </body>
 </html>

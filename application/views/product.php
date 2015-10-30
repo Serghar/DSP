@@ -15,13 +15,6 @@ $cartSize = count($this->session->userdata('cart'));
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
-	<div class="container-fluid">
-        <div class='row' style='background-color: #89C4F4; border-bottom: 1px solid #BE90D4'><br>
-            <div class='col-md-3 pull-left' style='font-size: 18px; color: #EEEEEE'><a style='text-decoration: none; color: #EEEEEE' href='/products'>MICROPRISM</a></div>
-            <div class='col-md-3 col-md-offset-3 pull-right'><a style='font-size: 18px; color: #FDE3A7' href="/cart">Your Shopping Cart (<?=$cartSize?>)</a></div>
-            <div class='pull-left' style='font-size: 18px; color: #EEEEEE'>Curating / Selling fine photography</div><br><br>
-        </div>
-    </div>
     <div class='container-fluid' style='background-color: #E4F1FE'>
     	<div class='row'>
 			<a class='col-md-1' href="/">Go back</a>

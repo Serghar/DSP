@@ -1,5 +1,6 @@
 <?php 
-
+//get cart size
+$cartSize = count($this->session->userdata('cart'));
 //variable to see if the cart has items in it
 (empty($products) ? $has_items = false : $has_items = true);
 

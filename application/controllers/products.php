@@ -15,6 +15,7 @@ class Products extends CI_Controller {
 		$products = $this->product->get_all_products();
 		$categories = $this->product->limited_categories();
 		// $this->session->sess_destroy();
+		$this->load->view('partials/header');
 		$this->load->view('main', array(
 			"products" => $products,
 			"categories" => $categories
@@ -25,7 +26,7 @@ class Products extends CI_Controller {
 	public function cart()
 	{
 		//make this just part of a header partial that is loaded with all views
-		$this->load->view('partials/login_page');
+		$this->load->view('partials/header');
 
 		$this->load->view("cart", array(
 			"products" => $this->session->userdata('cart')
@@ -42,6 +43,7 @@ class Products extends CI_Controller {
 	public function show($id)
 	{
 		$product = $this->product->get_product_info($id);
+		$this->load->view('partials/header');
 		$this->load->view("product", array(
 			'product_info' => $product));
 	}

@@ -8,7 +8,7 @@ $cartSize = count($this->session->userdata('cart'));
 <head>
     <meta charset="UTF-8">
     <title>MICROPRISM</title>
-    <link rel="stylesheet" type="text/css" href="assets/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/main.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -63,13 +63,6 @@ $cartSize = count($this->session->userdata('cart'));
     </script>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class='row' style='background-color: #89C4F4; border-bottom: 1px solid #BE90D4'><br>
-            <div class='col-md-3 pull-left' style='font-size: 18px; color: #EEEEEE'><a style='text-decoration: none; color: #EEEEEE' href='/products'>MICROPRISM</a></div>
-            <div class='col-md-3 col-md-offset-3 pull-right'><a style='font-size: 18px; color: #FDE3A7' href="/cart">Your Shopping Cart (<?=$cartSize?>)</a></div>
-            <div class='pull-left' style='font-size: 18px; color: #EEEEEE'>Curating / Selling fine photography</div><br><br>
-        </div>
-    </div>
     <div class='containter' style='background-color: #E4F1FE'>
         <div class='row'>
             <div class='col-md-1'>
