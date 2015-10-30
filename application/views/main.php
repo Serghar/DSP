@@ -17,7 +17,7 @@ $cartSize = count($this->session->userdata('cart'));
             $('form').submit(function() {
                 $.get('/admins/products_json', function(display)
                 {    
-                    var row = "<div class='container'><div class='row'><br><ul style='inline-block'>";
+                    var row = "<div class='container'><div class='row'><br><ul style='inline; list-style-type: none'>";
                     var product_term = $('input[name="search_product"]').val();
                     for (var i = 0; i < display.length; i++)
                     {
@@ -81,11 +81,11 @@ $cartSize = count($this->session->userdata('cart'));
                 </ul>
             </div><br>
             <div class='col-md-1 col-md-offset-1' style='font-size: 24px'><strong>Products</strong></div><br>
-            <div class='col-sm-9 col-sm-offset-1'>
-            <ul id='searching' style='display: inline-block'>
+            <div>
+            <ul id='searching' class='col-md-10 col-md-offset-1' style='list-style-type: none; display: inline'>
             <?php foreach($products as $product)
             { ?>
-                <li class="product">
+                <li style='display: inline-block; padding: 20px; width: 250px; height: 250px'class="product">
                     <a href="/products/show/<?=$product['id']?>">
                         <img src='/assets/photo_<?= $product['id']?>.jpg' height=140 width=140>
                         <p>Price: $<?=$product['price']?></p>
