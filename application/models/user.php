@@ -16,6 +16,35 @@ class User extends CI_Model {
         return $user_id;
     }
 
+    public function register_user_account($post)
+    {
+    	$query = "SELECT id, password from users WHERE email = '{$post['email']}'";
+    	$user_id = $this->db->query($query)->row_array();
+    	if(empty($user_id))
+    	{
+    		//register the new account
+    		$query = "INSERT INTO users(email, password, created_at, updated_at, billing_id, shipping_id) VALUES ('{$post['email']}', '{$post['password']}', NOW(), NOW(), '35', '35')";
+    		$this->db->query($query);
+    		$id = $this->db->insert_id();
+        	//return the users id
+    		return $id;
+    	}
+    	elseif($user_id['password'] == "27!27d8qq7s9As82jAs9812jN")
+    	{
+    		$query = "UPDATE users SET password = '{$post['password']}' WHERE id = '{$user_id['id']}'";
+    		$this->db->query($query);
+    		$id = $user_id['id'];
+    		//return the users id
+    		return $id;
+    	}
+    	else
+    	{
+    		$id = $user_id['id'];
+    		//return the users id
+    		return $id;
+    	}
+    }
+
     public function user_update($email, $card_number, $security_code, $expiration_date, $billing_id, $shipping_id)
     {
     	//check if the user already exists on file
@@ -93,6 +122,51 @@ class User extends CI_Model {
         if($this->form_validation->run())
         {
             return "valid";
+        }
+        else
+        {
+            return validation_errors();
+        }
+	}
+
+	public function validate_register($post)
+	{
+		$this->form_validation->set_rules("email", "Email", "trim|required|valid_email");
+		$this->form_validation->set_rules("password", "Password", "trim|required");
+		if($this->form_validation->run())
+        {
+            return "success";
+        }
+        else
+        {
+            return validation_errors();
+        }
+	}
+
+	public function validate_login($post)
+	{
+		$this->form_validation->set_rules("email", "Email", "trim|required|valid_email");
+		$this->form_validation->set_rules("password", "Password", "trim|required");
+		if($this->form_validation->run())
+        {
+        	$query = "SELECT id, password from users WHERE email = '{$post['email']}'";
+	    	$user_id = $this->db->query($query)->row_array();
+	    	if(empty($user_id))
+	    	{
+        		return "This email does not exist! Please register first";
+        	}
+        	//check if password matchs one on file
+        	else
+        	{
+        		if($user_id['password'] == $post['password'])
+        		{
+        			return $user_id['id'];
+        		}
+        		else
+        		{
+        			return "Password does not match";
+        		}
+        	}
         }
         else
         {

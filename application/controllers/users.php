@@ -8,7 +8,6 @@ class Users extends CI_Controller {
 
 	public function purchase_process()
 	{
-		var_dump($this->input->post());
 		//validate purchase form information here first!!
 		$status = $this->user->validate_information($this->input->post());
 		if ($status == "valid")
@@ -27,12 +26,12 @@ class Users extends CI_Controller {
 
 			//for JSON later
 			//echo "order confirmation";
-
 		}
 		else
-		{
-			echo $status;
-			die();
+		{	
+			//needs to be fixed to actually send back errors
+			$this->session->set_flashdata($status);
+			redirect("/cart");
 		}	
 	}
 
@@ -44,30 +43,46 @@ class Users extends CI_Controller {
 		$this->load->view("order_confirmation");
 	}
 
-	public function login_page()
+	public function login_modal_page()
 	{
-		$this->load->view('login_page');
+		echo $this->load->view("/partials/login-modal");
 	}
 
-	public function login_process()
+	//confirms if the user exists then logs them in
+	public function login()
 	{
-		die("this need to be made still!");
-		/*$status = $this->user->validate_user($this->input->post());
-		if($status == "valid")
+		//check if username and password exist
+		$result = $this->user->validate_login($this->input->post());
+		if(is_int($result))
 		{
-
+			//sign the user in
+			$this->session->set_userdata("user_id", $result);
 		}
-		else
+		//either going to return 'success' or errors
+			echo $result;
+	}
+
+	//registers a new user
+	public function register()
+	{
+		//see if the email and password field are valid entries
+		$result = $this->user->validate_register($this->input->post());
+		if($result == "success")
 		{
-			//echo back the errors
-			echo $status;
-		}*/
+			//if so create the user and make sure to connect if they have made past orders under that email
+			//Connecting just requires updating that password to the new one they entered
+			$user_id = $this->user->register_user_account($this->input->post());
+			//log the user in
+			$this->session->set_userdata("user_id", $user_id);
+		}
+		//either going to return 'success' or errors
+			echo $result;
 	}
 
 	public function logout()
 	{
-		$this->session->sess_destroy();
-		redirect("login_page");
+		$this->session->unset_userdata('user_id');
+		redirect("/");
 	}
 }
 

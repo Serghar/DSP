@@ -96,6 +96,22 @@ class Products extends CI_Controller {
 		redirect("/cart");
 	}
 
+	//updates the quantity of a product in the users cart
+	public function update_qty()
+    {
+    	$post = $this->input->post();
+    	$cart = $this->session->userdata('cart');
+    	foreach($cart as $key => $product)
+    	{
+    		if($product['id'] == $post['product_id'])
+    		{
+    			$cart[$key]['quantity'] = $post['quantity'];
+    		}
+    	}
+    	$this->session->set_userdata("cart", $cart);
+        redirect("/cart");
+    }
+
 	//--------------------ADMIN ONLY FUNCTIONS---------------------
 
 	//brings up the admin add product page
