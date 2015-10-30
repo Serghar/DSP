@@ -1,6 +1,5 @@
 <?php 
-//get cart size
-$cartSize = count($this->session->userdata('cart'));
+
 //variable to see if the cart has items in it
 (empty($products) ? $has_items = false : $has_items = true);
 
@@ -20,7 +19,7 @@ $total = 0;
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="row">
+	<div class="row" style='background-color: #E4F1FE; padding-bottom: 600px'>
   		<div class="col-md-8 col-md-offset-2">
 			<h1>Current Cart</h1>
 			<?php if ($has_items)

@@ -80,7 +80,7 @@
     </script>
 </head>
 <body>
-	<div class='container'>
+	<div class='container-fluid'>
         <div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'><br>
             <div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; front-weight: 300'>Dashboard</div>
             <a class='col-md-3 pull-left' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
@@ -95,14 +95,16 @@
 		echo $this->session->flashdata('add_errors');
 	}
 	?>
-	<div class='container' style='background-color: #A2DED0'>
+	<div class='container-fluid' style='background-color: #A2DED0; padding-bottom: 250px'>
 		<div class='row'><br>
 			<div class='col-md-4' style='font-size: 16px'><strong>Add a Product</strong></div> <br>
 		</div>
 		<form id="product-info" action='/products/create' method='post'>
     		<p>Name: <input type='text' name='name'></p>
     		<p>Description: </p>
-    		<textarea class='col-md-8' cols=21 rows=5 name='description' placeholder='Enter a description...'></textarea><br><br>
+    	<div class='row'>
+    		<textarea class='col-md-2' style='margin: 15px' cols=21 rows=6 name='description' placeholder='Enter a description...'></textarea><br><br>
+    	</div>
     		<p>Price: <input class='cold-md-4' style='width: 157px' type='text' name='price'></p>
 			<p><strong>Current Product Categories:</strong></p><br>
 			<ul id="current-cats">

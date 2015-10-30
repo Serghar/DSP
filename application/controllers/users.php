@@ -8,7 +8,7 @@ class Users extends CI_Controller {
 
 	public function purchase_process()
 	{
-		var_dump($this->input->post());
+		// var_dump($this->input->post());
 		//validate purchase form information here first!!
 		$status = $this->user->validate_information($this->input->post());
 		if ($status == "valid")

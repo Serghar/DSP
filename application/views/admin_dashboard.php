@@ -38,19 +38,31 @@
                     }, 'json');
                     return false; 
                 });
-                // $('#status_change').change(function(){
-                //     $.post('/admins/update_order/', function(
-                //         ''))
-                // })
+                $('#admin_search').submit(function(){
+                    $.get('/admins/order_display', function(display){
+                        console.log(display);
+                        var row = "<thead><th>Order ID</th><th>Name</th><th>Date</th><th>Billing Address</th><th>Total</th><th>Status</th></thead>";
+                       var term = $('input[name="search"]').val();
+                       for (var i = 0; i < display.length; i++)
+                       {
+                            if (term == display[i].first_name || term == display[i].id || term == display[i].zipcode)
+                            {
+                                row += "<tr><td><a href='/admins/show/" + display[i].id  + "'>"+ display[i].id + "</a></td><td>" + display[i].first_name + "</td><td>" + display[i].created_at + "</td><td>" + display[i].street + " " + display[i].city + " " + display[i].state + " " + display[i].zipcode + "</td><td>" + display[i].total + "</td><td><select><option value='" + display[i].status + "'>" + display[i].status + "</option><option value='In Process'>In Process</option><option value='Cancelled'>Cancelled</option><option value='Shipped'>Shipped</option> </select></td></tr>";
+                            }                       
+                       }
+                       $('#orders').html(row);
+                    }, 'json');
+                    return false;
+                })
             });
         </script>
 </head>	
 <body>
-    <div class='container'>
+    <div class='container-fluid'>
         <div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'>
             <br>
             <div class='col-md-2 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Dashboard</div>
-            <form class='col-lg-2 pull-right' action='/admins/order_search' method='post'>
+            <form class='col-lg-2 pull-right' action='/admins/order_search' id='admin_search' method='post'>
                 <input type='text' name='search' placeholder='search' style='background-color: #22A7F0; color: #FDE3A7; border: 1px solid #6C7A89'>
                 <input type='hidden' name='display_type' value='submit'>
             </form>
@@ -60,7 +72,7 @@
             <br><br>
         </div>
     </div>
-    <div class='container' style="background-color: #A2DED0">
+    <div class='container-fluid' style="background-color: #A2DED0; padding-bottom: 400px">
         <div class='row'>
             <br>
             <form class='col-lg-4 pull-right' action='/admins/order_display' method='post'>
