@@ -22,7 +22,7 @@
                         {
                             if(search_term == display[i].name || search_term == display[i].id)
                             {
-                                row += "<tr><td>" + display[i].name + "</td><td>" + display[i].id + "</td><td>" + display[i].name + "</td><td>" + display[i].price + "</td><td>" + display[i].description + "</td><td>" + display[i].name + "</td><td><a href='/admins/edit_product/"+display[i].id+"'>edit</a> <a href='/admins/delete_prod/" + display[i].id + "'>delete</a></td></tr>"
+                                row += "<tr><td><img src='/assets/photo_" + display[i].id + ".jpg' height= 96 width=96></td><td>" + display[i].id + "</td><td>" + display[i].name + "</td><td>" + display[i].price + "</td><td>" + display[i].description + "</td><td>" + display[i].name + "</td><td><a href='/admins/edit_product/"+display[i].id+"'>edit</a> <a href='/admins/delete_prod/" + display[i].id + "'>delete</a></td></tr>"
                             }
                         }
                         $('#products').html(row);
@@ -36,14 +36,14 @@
 <body>
     <div class='container'>
         <div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'><br>
-            <div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; front-weight: 300'>Dashboard</div>
-            <a class='col-md-3 pull-left' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
-            <a class='col-md-3 pull-left' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
-            <form class='col-lg-3 pull-right' action='/admins/products_json' method='post'>
+            <div class='col-md-2 pull-left' style='color: #FDE3A7; font-size: 16px; front-weight: 300'>Dashboard</div>
+            <a class='col-md-2 pull-left' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
+            <a class='col-md-2 pull-left' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
+            <form class='col-lg-2 pull-right' action='/admins/products_json' method='post'>
                 <input type='text' id='search_box' name='search' placeholder='Search' style='background-color: #22A7F0; color: #FDE3A7; border: 1px solid #6C7A89'>
                 <input type='hidden' name='search_prods' value='submit'>
             </form>
-            <a class='col-md-3 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
+            <a class='col-md-2 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
             <br><br>
         </div>
     </div>

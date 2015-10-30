@@ -8,9 +8,6 @@
 <head>
 	<meta charset='UTF-8'>
 	<title>Admin Dashboard</title>
-<!--     <link rel='stylesheet' href='/assets/bootstrap/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='/assets/bootstrap/css/bootstrap.css'>
-    <link rel='stylesheet' href='/assets/bootstrap/css/bootstrap-theme.css'> -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -52,14 +49,14 @@
     <div class='container'>
         <div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'>
             <br>
-            <div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Dashboard</div>
-            <form class='col-lg-3 pull-right' action='/admins/order_search' method='post'>
+            <div class='col-md-2 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Dashboard</div>
+            <form class='col-lg-2 pull-right' action='/admins/order_search' method='post'>
                 <input type='text' name='search' placeholder='search' style='background-color: #22A7F0; color: #FDE3A7; border: 1px solid #6C7A89'>
                 <input type='hidden' name='display_type' value='submit'>
             </form>
-            <a class='col-md-3 pull-left' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
-            <a class='col-md-3 pull-left' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
-            <a class='col-md-3 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
+            <a class='col-md-2 pull-left' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
+            <a class='col-md-2 pull-left' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
+            <a class='col-md-2 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
             <br><br>
         </div>
     </div>

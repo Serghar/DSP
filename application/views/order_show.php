@@ -24,7 +24,7 @@
 			<p>Name: <?= $infos['first_name'] ?> Address: <?= $infos['street'] ?> City: <?= $infos['city'] ?> State: <?= $infos['state'] ?> Zip: <?= $infos['zipcode'] ?> </p>
 			<p></p>
 			<p><strong>Customer billing info: </strong></p>
-			<p>Name: <?= $infos['billing_name'] ?> Address: <?= $infos['billing_street'] ?>City: <?= $infos['billing_city'] ?> State: <?= $infos['billing_state'] ?> Zip: <?= $infos['billing_zipcode'] ?> </p>
+			<p>Name: <?= $infos['billing_name'] ?> Address: <?= $infos['billing_street'] ?> City: <?= $infos['billing_city'] ?> State: <?= $infos['billing_state'] ?> Zip: <?= $infos['billing_zipcode'] ?> </p>
 		</div>
 	</div>
 </div>

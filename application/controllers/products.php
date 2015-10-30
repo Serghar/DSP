@@ -13,9 +13,11 @@ class Products extends CI_Controller {
 	public function index()
 	{
 		$products = $this->product->get_all_products();
+		$categories = $this->product->limited_categories();
 		// $this->session->sess_destroy();
 		$this->load->view('main', array(
-			"products" => $products
+			"products" => $products,
+			"categories" => $categories
 			));
 	}
 
@@ -78,7 +80,7 @@ class Products extends CI_Controller {
 			{
 				unset($cart[$key]);
 			}
-			var_dump($cart);
+			// var_dump($cart);
 		}
 		$this->session->set_userdata('cart', $cart);
 		redirect("/cart");
@@ -237,5 +239,10 @@ class Products extends CI_Controller {
 		{
 			redirect("/");
 		}
+	}
+	//lets user display all categories on main page
+	public function show_cats_json()
+	{
+		echo json_encode($this->product->get_categories());
 	}
 } ?>

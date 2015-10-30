@@ -126,7 +126,7 @@ class Product extends CI_Model {
      //used to display appropriate results from admin product search
      public function search($post)
      {
-        $query = "SELECT * FROM products WHERE name = ?";
+        $query = "SELECT * FROM products WHERE name OR id = ?";
         $values = $post;
         return $this->db->query($query,$values)->result_array();
      }
@@ -145,6 +145,12 @@ class Product extends CI_Model {
         {
             return validation_errors();
         }
+    }
+    public function limited_categories()
+    {
+        $query = "SELECT * FROM categories ORDER BY id DESC LIMIT ?";
+        $values = 5;
+        return $this->db->query($query, $values)->result_array();
     }
 }
 ?>
