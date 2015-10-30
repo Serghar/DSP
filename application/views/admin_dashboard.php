@@ -13,6 +13,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type='text/javascript'>
             $(document).ready(function() {
+
+                //THIS SHIT RIGHT HERE!
                 $('#order_disp').change(function(){
                     $.get('/admins/order_display', function(display){
                        var row = "<thead><th>Order ID</th><th>Name</th><th>Date</th><th>Billing Address</th><th>Total</th><th>Status</th></thead>";

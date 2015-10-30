@@ -86,4 +86,10 @@ class Order extends CI_Model {
         $values = $id;
         return $this->db->query($query,$values)->row_array();
      }
+
+     public function change_order_status($id, $status)
+     {
+        $query = "UPDATE orders SET status = '{$status}' WHERE id = '{$id}'";
+        $this->db->query($query);
+     }
  } ?>

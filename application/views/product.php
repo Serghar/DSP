@@ -26,7 +26,7 @@ $cartSize = count($this->session->userdata('cart'));
     		<p class='col-md-6 col-md-offset-4'>Price: $<?=$product_info['price']?></p>
     		<form class='col-md-6 col-md-offset-4' action="/products/add_cart/<?=$product_info['id']?>" method='post'>
     			<p>Quantity: 
-    			<input type="number" name="quantity">
+    			<input type="number" name="quantity" min="1" value="1">
     			<input type="submit" value="Add to cart"></p>
 			</form>
 		</div>
