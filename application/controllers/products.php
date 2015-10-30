@@ -271,4 +271,8 @@ class Products extends CI_Controller {
 	{
 		echo json_encode($this->product->get_categories());
 	}
+	public function prod_by_category()
+	{
+		echo json_encode($this->product->prod_by_category());
+	}
 } ?>

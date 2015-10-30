@@ -4,7 +4,7 @@ class Product extends CI_Model {
     //return info on all products for main page
     public function get_all_products()
     {
-        $query = "SELECT id, name, description, price FROM products"; 
+        $query = "SELECT products.id, products.name, products_in_orders.quantity, products.price FROM products LEFT JOIN products_in_orders ON products.id = products_in_orders.product_id GROUP BY products.id"; 
         return $this->db->query($query)->result_array();
     }
 
@@ -148,9 +148,14 @@ class Product extends CI_Model {
     }
     public function limited_categories()
     {
-        $query = "SELECT * FROM categories ORDER BY id DESC LIMIT ?";
-        $values = 5;
-        return $this->db->query($query, $values)->result_array();
+        $query = "SELECT * FROM categories WHERE id != 19 ORDER BY id DESC";
+        // $values = 5;
+        return $this->db->query($query)->result_array();
+    }
+    public function prod_by_category()
+    {
+        $query = "SELECT products.id, products.name AS title, products.description, products.price, products_has_categories.product_id, categories.name FROM products LEFT JOIN products_has_categories ON products.id = products_has_categories.product_id LEFT JOIN categories ON products_has_categories.category_id = categories.id";
+        return $this->db->query($query)->result_array();
     }
 }
 ?>

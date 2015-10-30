@@ -98,29 +98,32 @@
 
 </head>	
 <body>
-	<div class='container' style='background-color: #22A7F0'>
-		<div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'><br>
-			<div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Dashboard</div>
-			<a class='col-md-3 pull-right' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
-	            <a class='col-md-3 pull-right' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
-	            <a class='col-md-3 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
-	            <br><br>
-	    </div>
-	</div>
-	<div class='container' style='background-color: #A2DED0'><br>
-		<div class='row'>
-			<div class='col-md-3 pull-left' style='color: black; font-size: 16px; font-weight: 300px'><strong>Edit Product - ID <?= $product['id'] ?> </strong></div>
+	<div class='container-fluid'>
+        <div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'>
+            <br>
+            <div class='col-md-2 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Dashboard</div>
+            <a class='col-md-2 col-md-offset-1' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
+            <a class='col-md-2 col-md-offset-1' href='/admins/products' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Products</a>
+            <a class='col-md-2 pull-right' href='/admins/logoff' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Log Off</a>
+            <br><br>
+        </div>
+    </div>
+	<div class='container-fluid' style='background-color: #A2DED0; padding-bottom: 200px'>
+		<div class='row'><br>
+			<div class='col-md-3' style='color: black; font-size: 16px; font-weight: 300px'><strong>Edit Product - ID <?= $product['id'] ?> </strong></div><br><br>
 		</div>
+		<!-- <div class='row'> -->
+<!-- 			<div class='col-md-4'></div>
+			<div class='col-md-4'><br> -->
+		<form action='/products/update' method='post'>
+			<p> Name: <input class='cold-md-4' type='text' name='name' value='<?= $product['name']?>'></p>
+			<p>Description:</p>
 		<div class='row'>
-			<div class='col-md-4'></div>
-			<div class='col-md-4'><br>
-			<form action='/products/update' method='post'>
-		<p>Name: <input class='col-md-4' type='text' name='name' value='<?= $product['name']?>'></p>
-		<p>Description:</p>
-		<textarea class='col-md-8' cols=25 rows=5 name='description'><?= $product['description']?></textarea><br><br>
-		<p>Price: <input class='col-md-4' style='width:182px'type='text' name='price' value='<?=$product['price']?>'></p>
-	</form>
-	<p>Current Product Categories:</p>
+			<textarea class='col-md-2' style='margin: 15px' cols=21 rows=6 name='description'><?= $product['description']?></textarea><br><br>
+		</div>
+			<p>Price: <input class='col-md-4' style='width:157px' type='text' name='price' value='<?=$product['price']?>'></p>
+		</form>
+	<p><strong>Current Product Categories:</strong></p>
 	<div id="categories">
 	</div>
 	<h4>Select a category to add:</h4>

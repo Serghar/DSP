@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> 
 </head>
 <body>
-<div class='container' style='background-color: #22A7F0'>
+<div class='container-fluid' style='background-color: #22A7F0'>
 	<div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'><br>
 		<div class='col-md-3 pull-left' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Dashboard</div>
 		<a class='col-md-3 pull-left' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
@@ -15,7 +15,7 @@
             <br><br>
     </div>
 </div>
-<div class='container' style='background-color: #A2DED0'><br>
+<div class='container-fluid' style='background-color: #A2DED0'><br>
 	<div class='row'>
 		<div id='order_customer' style='padding: 5px; margin: 5px; height: 200; border: 1px solid black'>
 			<p><strong>Order ID:</strong> <?= $id ?></p>
@@ -28,7 +28,7 @@
 		</div>
 	</div>
 </div>
-<div class='container' style='background-color: #A2DED0'><br>
+<div class='container-fluid' style='background-color: #A2DED0'><br>
 	<div class='table'>
 		<table class='table' style="background-color: #ECECEC; color: #6C7A89">
 			<thead>
@@ -46,7 +46,7 @@
 		</table>
 	</div>
 </div>
-<div class='container' style='background-color: #A2DED0'>
+<div class='container-fluid' style='background-color: #A2DED0; padding-bottom: 300px'>
 	<div class='div-inline' style='display: block'>
 		<div id='ord_costs' style='background-color: #A2DED0; border: 1px solid black; width: 190px; padding: 5px; margin: 5px' class='pull-right'>
 			<p>Total Price: $<?= $status['total'] ?></p>

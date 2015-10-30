@@ -22,7 +22,7 @@
                         {
                             if(search_term == display[i].name || search_term == display[i].id)
                             {
-                                row += "<tr><td><img src='/assets/photo_" + display[i].id + ".jpg' height= 96 width=96></td><td>" + display[i].id + "</td><td>" + display[i].name + "</td><td>" + display[i].price + "</td><td>" + display[i].description + "</td><td>" + display[i].name + "</td><td><a href='/admins/edit_product/"+display[i].id+"'>edit</a> <a href='/admins/delete_prod/" + display[i].id + "'>delete</a></td></tr>"
+                                row += "<tr><td><img src='/assets/photo_" + display[i].id + ".jpg' height= 96 width=96></td><td>" + display[i].id + "</td><td>" + display[i].name + "</td><td>" + display[i].price + "</td><td>" + display[i].quantity + "</td><td><a href='/admins/edit_product/"+display[i].id+"'>edit</a> <a href='/admins/delete_prod/" + display[i].id + "'>delete</a></td></tr>"
                             }
                         }
                         $('#products').html(row);
@@ -34,7 +34,7 @@
 
 </head>	
 <body>
-    <div class='container'>
+    <div class='container-fluid'>
         <div class='row' style='background-color: #22A7F0; border-bottom: 2px solid #BDC3C7'><br>
             <div class='col-md-2 pull-left' style='color: #FDE3A7; font-size: 16px; front-weight: 300'>Dashboard</div>
             <a class='col-md-2 pull-left' href='/admins/orders' style='color: #FDE3A7; font-size: 16px; font-weight: 300'>Orders</a>
@@ -47,7 +47,7 @@
             <br><br>
         </div>
     </div>
-    <div class='container' style='background-color: #A2DED0'>
+    <div class='container-fluid' style='background-color: #A2DED0'>
         <div class='table'><br>
         <table id='products' class='table' style='background-color: #ECECEC; color: #6C7A89'>
         <thead>
@@ -83,7 +83,7 @@
                     echo "<td>" . $product['id'] . "</td>";
                     echo "<td>" . $product['name'] . "</td>";
                     echo "<td>" . $product['name'] . "</td>";
-                    echo "<td>" . $product['name'] . "</td>";
+                    echo "<td>" . $product['quantity'] . "</td>";
                     echo "<td><a href='/admins/edit_product/{$product["id"]}'>edit</a> <a href='/products/delete/{$product["id"]}'>delete</a></td></tr>";
                     } ?>
         </tbody>
